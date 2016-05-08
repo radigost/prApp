@@ -1,0 +1,22 @@
+<div>Это блог
+
+<table class="table table-striped">
+	<tr>
+		<td>Дата</td>
+		<td>Заголовок</td>
+		<td>Картинка анонса</td>
+		<td>Анонс</td>
+		<td>Запись</td>
+	</tr>
+	<tr ng-repeat ="entry in blog">
+		<td>{{entry.date | date}}</td>
+		<td>{{entry.title}}</td>
+		<td>{{entry.anons}}</td>
+		<td>Запись</td>
+	</tr>
+
+
+</table>
+
+
+</div>

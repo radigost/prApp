@@ -1,0 +1,32 @@
+<p>Здесь размещаются заказы на обратный звонок и на запись на мастекласс, а также заказы на индивидуальный пряник</p>
+
+
+<div>
+	<table class="table table-striped">
+		<tr>
+			<td>Дата</td>
+			<td>Имя</td>
+			<td>Телефон</td>
+			<td>Емайл</td>
+			<td>Сообщение</td>
+			<td>Откуда Запрос</td>
+			<td>Удалить</td>
+
+
+		</tr>
+
+		<tr ng-repeat="callback in callbacks">
+			<td>{{callback.date | date }}</td>
+			<td>{{callback.name}}</td>
+
+			<td>{{callback.phone}}</td>
+			<td>{{callback.email}}</td>
+			<td>{{callback.message}}</td>
+			<td>{{callback.from_method}}</td>
+      <td><a ng-click="delCallback(callback._id)">Удалить</a></td>
+		</tr>
+
+	</table>
+
+
+</div>

@@ -1,0 +1,33 @@
+<div>
+
+<h1>Заказы</h1>
+
+<table class="table table-striped">
+  <tr>
+    <td>Дата регистрации</td>
+    <td>Сумма заказа</td>
+    <td>Имя</td>
+    <td>Телефон</td>
+    <td>email</td>
+    <td>Нужна доставка</td>
+    <td>Адрес доставки</td>
+    <td>Заказ выполнен</td>
+    <td>Удалить заказ</td>
+  </tr>
+  <!--<p>{{main.orders}}</p>-->
+  <tr ng-repeat="item in main.orders.orders track by $index">
+    <td>{{item.date |date }}</td>
+    <td>{{item.summ}}</td>
+    <td>{{item.customername}}</td>
+    <td>{{item.customerphone}}</td>
+    <td>{{item.customeremail}}</td>
+    <td>{{item.needDelivery}}</td>
+    <td>{{item.customeradress}}</td>
+    <td><a ng-click="main.orders.orderDeliver(item)">Доставить</a><h5 ng-show="item.delivered">Дошло</h5></td>
+    <td><a ng-click="main.orders.delOrder(item)"><i class="fa fa-trash-o"></i>Удалить</a> </td>
+  </tr>
+
+</table>
+
+
+</div>
