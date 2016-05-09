@@ -39,6 +39,7 @@ angular.module('adminApp')
     return orderModel;
 }
 ])
+    
 .service('gingerFactory',['$resource','baseURL',function($resource,baseURL){
 
 
