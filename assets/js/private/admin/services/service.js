@@ -2,11 +2,11 @@
 //http://localhost:3578/api/
 angular.module('adminApp')
   //.constant("baseURL","http://194.87.232.245:3578/api/")
-.constant("baseURL","http://localhost:3578/api/")
+.constant("baseURL","http://localhost:1337")
 .factory('RestAPI', [
     'Restangular', function(Restangular) {
         return Restangular.withConfig(function(RestangularConfigurer) {
-            return RestangularConfigurer.setBaseUrl('http://localhost:3578/api/');
+            return RestangularConfigurer.setBaseUrl('http://localhost:1337');
         });
     }
 ])
@@ -39,7 +39,36 @@ angular.module('adminApp')
     return orderModel;
 }
 ])
-    
+
+    .factory('usersFactory',['RestAPI',function(RestAPI){
+        // console.log("starting factory");
+        var userModel;
+        userModel = function () {
+            this.description = "модель для пользователей. Можно смотреть и назначать права.";
+            this.orders = RestAPI.all('users').getList().$object;
+            return this;
+        }
+
+        // orderModel.prototype.delOrder = function(item){
+        //     console.log("started");
+        //     console.log(item);
+        //     var self = this;
+        //     item.one(item._id).remove().then(function (res) {
+        //         _.pull(self.orders,item);
+        //         console.log("removed");
+        //     });
+        //
+        // };
+        //
+        // orderModel.prototype.orderDeliver = function(item){
+        //     console.log(item);
+        //     item.delivered = true;
+        //     item.one(item._id).put();
+        // };
+
+        return userModel;
+    }
+    ])
 .service('gingerFactory',['$resource','baseURL',function($resource,baseURL){
 
 

@@ -24,9 +24,15 @@ angular
                 controller:'MainCtrl as main',
                 resolve:{
                     orders: function (ordersFactory) {
-                         console.log("resolvins");
+                         console.log("resolvin orders");
                         var s;
                         s = new ordersFactory;
+                        return s;
+                    },
+                    users: function (usersFactory) {
+                        console.log("resolvins");
+                        var s;
+                        s = new usersFactory;
                         return s;
                     },
                 },

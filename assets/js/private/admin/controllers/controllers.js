@@ -9,11 +9,13 @@
  */
 angular.module('adminApp')
 
-.controller('MainCtrl',['orders', function (orders) {
+.controller('MainCtrl',['orders','users', function (orders,users) {
 	console.log("Загружен контроллер");
-	var vm = this
+	var vm = this;
 	vm.orders = orders
+	vm.users= users;
 	console.log(vm.orders);
+	console.log(vm.users);
 
 
 	 
