@@ -15,7 +15,7 @@ angular.module('adminApp')
     var orderModel;
     orderModel = function () {
         this.description = "модель для заказов. Позволяет просматривать, изменять и удалять заказы";
-        this.orders = RestAPI.all('order').getList().$object;
+        this.orders = RestAPI.all('orders').getList().$object;
         return this;
     }
 
