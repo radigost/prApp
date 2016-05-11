@@ -1,0 +1,5 @@
+INSERT INTO public.tags (id, name, normalname, showinmagaz, "createdAt", "updatedAt") VALUES (1, 'odinoch', 'Одиночные пряники', true, '2016-05-09 19:24:14.000000', '2016-05-09 19:24:14.000000');
+INSERT INTO public.tags (id, name, normalname, showinmagaz, "createdAt", "updatedAt") VALUES (2, 'fromsaratov', 'Подарки из Саратова', true, '2016-05-09 19:25:10.000000', '2016-05-09 19:25:10.000000');
+INSERT INTO public.tags (id, name, normalname, showinmagaz, "createdAt", "updatedAt") VALUES (3, 'newyear', 'Новогодние', true, '2016-05-09 19:25:41.000000', '2016-05-09 19:25:41.000000');
+INSERT INTO public.tags (id, name, normalname, showinmagaz, "createdAt", "updatedAt") VALUES (4, 'palochka', 'На палочке', true, '2016-05-09 19:26:19.000000', '2016-05-09 19:26:19.000000');
+INSERT INTO public.tags (id, name, normalname, showinmagaz, "createdAt", "updatedAt") VALUES (5, 'nabor', 'Пряники в Наборе', true, '2016-05-09 19:26:48.000000', '2016-05-09 19:26:48.000000');

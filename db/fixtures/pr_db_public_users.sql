@@ -1,0 +1,1 @@
+INSERT INTO public.users (id, "createdAt", "updatedAt", name) VALUES (1, '2016-05-09 18:20:46.000000', '2016-05-09 18:20:46.000000', 'admin');

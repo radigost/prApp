@@ -76,63 +76,52 @@ angular.module('adminApp')
         };
         return callsModel;
 }])
-    .factory('blogFactory',['RestAPI',function(RestAPI){
-        var blog;
-        blog = function () {
-            this.description = "модель для Блога";
-            this.entries = RestAPI.all('blog').getList().$object;
-            return this;
-        };
-        return blog;
-    }])
-.service('gingerFactory',['baseURL',function(baseURL){
-
-
-
-    this.getProducts  = function (){
-        //return pr;  
-            return $resource(baseURL+"pr/:id",null,{'update':{method:'PUT'}});                
-
+.factory('blogFactory',['RestAPI',function(RestAPI){
+    var blog;
+    blog = function () {
+        this.description = "модель для Блога";
+        this.entries = RestAPI.all('blog').getList().$object;
+        return this;
     };
-    this.getDetails = function(index){
-        return pr[index];
-    };
-    this.getNormalName = function(index){
-        return normalName[index];
-    };
-    this.getNewCart = function(){
-        return cart;
-    };
-
-    this.getTags  = function (){
-            return $resource(baseURL+"tag/:id",{id:'@id'},{'update':{method:'PUT'}});                
-
-    };
-    
+    return blog;
 }])
-.service('cartFactory',['$resource','baseURL',function($resource,baseURL){
-    this.getCart = function(){
-        return  $resource(baseURL+"cart/:id",null,{'update':{method:'PUT'}});
-    };
-    this.getOrder = function (){
-        return  $resource(baseURL+"order/:id",null,{'update':{method:'PUT'}});
-    };
-
-     
-    
-}])
-
-// .service('blogFactory',['$resource','baseURL',function($resource,baseURL){
+// .service('gingerFactory',['baseURL',function(baseURL){
 //
-// this.getBlog = function(){
-//         return  $resource(baseURL+"blog/:id",null,{'update':{method:'PUT'}});
+//
+//
+//     this.getProducts  = function (){
+//         //return pr;
+//             return $resource(baseURL+"pr/:id",null,{'update':{method:'PUT'}});
+//
 //     };
+//     this.getDetails = function(index){
+//         return pr[index];
+//     };
+//     this.getNormalName = function(index){
+//         return normalName[index];
+//     };
+//     this.getNewCart = function(){
+//         return cart;
+//     };
+//
+//     this.getTags  = function (){
+//             return $resource(baseURL+"tag/:id",{id:'@id'},{'update':{method:'PUT'}});
+//
+//     };
+//
+// }])
+// .service('cartFactory',['$resource','baseURL',function($resource,baseURL){
+//     this.getCart = function(){
+//         return  $resource(baseURL+"cart/:id",null,{'update':{method:'PUT'}});
+//     };
+//     this.getOrder = function (){
+//         return  $resource(baseURL+"order/:id",null,{'update':{method:'PUT'}});
+//     };
+//
+//
+//
 // }])
 
-.service('callbackFactory',['$resource','baseURL',function($resource,baseURL){
 
-this.getCallback = function(){
-        return  $resource(baseURL+"callback/:callback_id",{callback_id:'@callback_id'},{'update':{method:'PUT',}});
-    };
-}])
+
 ;
