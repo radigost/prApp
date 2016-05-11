@@ -84,7 +84,7 @@
     <td>Показывать в магазине</td>
     <td>Удалить</td>
   </tr>
-  <tr ng-repeat="tag in alltags">
+  <tr ng-repeat="tag in products.tags.tags">
     <td>{{tag.name}}</td>
     <td>{{tag.normalname}}</td>
     <td><input type="checkbox" name="popular" id="popular"  ng-model="tag.showinmagaz"   ></td>
@@ -119,7 +119,7 @@
     </div>
   </div>
 </div> 
-<!-- Конеец Категории-->
+<!-- Конец Категории-->
 
 
 
@@ -139,13 +139,13 @@
     <td>Популярная</td>
     <td>Удалить</td>
   </tr>
-  <tr ng-repeat="item in products">
+  <tr ng-repeat="item in products.products.products">
     <td>{{item.id}}</td>
     
     <td>{{item.title}}</td>
     <td>{{item.price | currency }}</td>
    <td>{{item.description}}</td> 
-      <td><img class = "thumbnail img-responsive"src="http://localhost:3001/{{item.img}}"></td>
+      <td><img class = "thumbnail img-responsive"src="{{item.img}}"></td>
       <td>{{item.img}}</td>
          <td>{{item.tags}}</td>
             <td>{{item.popular}}</td>

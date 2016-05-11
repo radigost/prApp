@@ -1,5 +1,5 @@
 /**
- * Orders.js
+ * Products.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,33 +8,29 @@
 module.exports = {
 
   attributes: {
-    customername: {
+    popular: {
+      type: 'boolean'
+    },
+    description: {
       type: 'string'
     },
-    customerphone: {
+    gros_description: {
       type: 'string'
     },
-    customeremail: {
+    price: {
+      type: 'integer'
+    },
+    img: {
       type: 'string'
     },
-    needDelivery: {
-      type: 'boolean',
-      defaultsTo: 'false'
-    },
-    customeradress: {
+    title: {
       type: 'string'
     },
-    delivered: {
-      type: 'boolean',
-      defaultsTo: 'false'
-    },
-    products: {
+    tags: {
       type: 'json'
     },
-    createdAt: {
-      type: 'date'
-    },
-    
+
+
   }
 };
 

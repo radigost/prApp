@@ -16,7 +16,7 @@
   </tr>
   <!--<p>{{main.orders}}</p>-->
   <tr ng-repeat="item in main.orders.orders track by $index">
-    <td>{{item.date |date }}</td>
+    <td>{{item.createdAt |date }}</td>
     <td>{{item.summ}}</td>
     <td>{{item.customername}}</td>
     <td>{{item.customerphone}}</td>

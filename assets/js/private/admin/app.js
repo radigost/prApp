@@ -41,17 +41,39 @@ angular
             .state('products',{
                 url:'/products',
                 templateUrl:'templates/products.html',
-                controller:'ProductsCtrl'
+                controller:'ProductsCtrl as products',
+                resolve: {
+                    tags: function (tagsFactory) {
+                        console.log("resolvin tags");
+                        var s;
+                        s = new tagsFactory;
+                        return s;
+                    },
+                    products: function (productsFactory) {
+                        console.log("resolvin products");
+                        var s;
+                        s = new productsFactory;
+                        return s;
+                    },
+                }
             })
             .state('blog',{
                 url:'/blog',
                 templateUrl:'templates/blog.html',
-                controller:'BlogCtrl'
+                controller:'BlogCtrl as blog'
             })
             .state('callback',{
                 url:'/callback',
                 templateUrl:'templates/callback.html',
-                controller:'CallbackCtrl'
+                controller:'CallbackCtrl as calls',
+                resolve: {
+                    calls: function (callsFactory) {
+                        console.log("resolvin calls");
+                        var s;
+                        s = new callsFactory;
+                        return s;
+                    },
+                }
             })
         ;
     })

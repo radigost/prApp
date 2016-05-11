@@ -15,8 +15,8 @@
 
 		</tr>
 
-		<tr ng-repeat="callback in callbacks">
-			<td>{{callback.date | date }}</td>
+		<tr ng-repeat="callback in calls.callbacks.calls">
+			<td>{{callback.createdAt | date }}</td>
 			<td>{{callback.name}}</td>
 
 			<td>{{callback.phone}}</td>

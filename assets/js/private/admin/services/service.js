@@ -40,36 +40,43 @@ angular.module('adminApp')
 }
 ])
 
-    .factory('usersFactory',['RestAPI',function(RestAPI){
-        // console.log("starting factory");
-        var userModel;
-        userModel = function () {
-            this.description = "модель для пользователей. Можно смотреть и назначать права.";
-            this.orders = RestAPI.all('users').getList().$object;
+.factory('usersFactory',['RestAPI',function(RestAPI){
+    var userModel;
+    userModel = function () {
+        this.description = "модель для пользователей. Можно смотреть и назначать права.";
+        this.orders = RestAPI.all('users').getList().$object;
+        return this;
+        };
+    return userModel;
+}])
+.factory('tagsFactory',['RestAPI',function(RestAPI){
+        var tagModel;
+        tagModel = function () {
+            this.description = "модель для Тэгов";
+            this.tags = RestAPI.all('tags').getList().$object;
             return this;
-        }
-
-        // orderModel.prototype.delOrder = function(item){
-        //     console.log("started");
-        //     console.log(item);
-        //     var self = this;
-        //     item.one(item._id).remove().then(function (res) {
-        //         _.pull(self.orders,item);
-        //         console.log("removed");
-        //     });
-        //
-        // };
-        //
-        // orderModel.prototype.orderDeliver = function(item){
-        //     console.log(item);
-        //     item.delivered = true;
-        //     item.one(item._id).put();
-        // };
-
-        return userModel;
-    }
-    ])
-.service('gingerFactory',['$resource','baseURL',function($resource,baseURL){
+        };
+        return tagModel;
+    }])
+.factory('productsFactory',['RestAPI',function(RestAPI){
+        var productModel;
+        productModel = function () {
+            this.description = "модель для продуктов";
+            this.products = RestAPI.all('products').getList().$object;
+            return this;
+        };
+        return productModel;
+    }])
+.factory('callsFactory',['RestAPI',function(RestAPI){
+    var callsModel;
+    callsModel = function () {
+            this.description = "модель для Заказа Звонков";
+            this.calls = RestAPI.all('callbacks').getList().$object;
+            return this;
+        };
+        return callsModel;
+    }])
+.service('gingerFactory',['baseURL',function(baseURL){
 
 
 
