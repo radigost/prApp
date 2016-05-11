@@ -60,7 +60,15 @@ angular
             .state('blog',{
                 url:'/blog',
                 templateUrl:'templates/blog.html',
-                controller:'BlogCtrl as blog'
+                controller:'BlogCtrl as blog',
+                resolve: {
+                    entries: function (blogFactory) {
+                        console.log("resolvin entries");
+                        var s;
+                        s = new blogFactory;
+                        return s;
+                    },
+                }
             })
             .state('callback',{
                 url:'/callback',

@@ -106,23 +106,25 @@ angular.module('adminApp')
 	// };
 
 }])
-.controller('BlogCtrl',['$scope','blogFactory', function ($scope,blogFactory) {
-
-	 blogFactory.getBlog().query(function(response)
-	 	{$scope.blog = response;
-	 	});
-
-	  $scope.delBlog = function(id){
-	  	console.log("started");
-	  	blogFactory.getBlog().remove({id:id},function(sucsess){
-	  		for(var i = $scope.blog.length-1; i >= 0; i--){
-	            if($scope.blog[i].id == id){
-	                $scope.blog.splice(i,1);
-	            }
-	        }
-	  		console.log("done");
-	  		});
-	  };
+.controller('BlogCtrl',['$scope','entries', function ($scope,entries) {
+	var vm = this;
+	vm.entries = entries;
+	console.log(vm);
+	 // blogFactory.getBlog().query(function(response)
+	 // 	{$scope.blog = response;
+	 // 	});
+     //
+	 //  $scope.delBlog = function(id){
+	 //  	console.log("started");
+	 //  	blogFactory.getBlog().remove({id:id},function(sucsess){
+	 //  		for(var i = $scope.blog.length-1; i >= 0; i--){
+	 //            if($scope.blog[i].id == id){
+	 //                $scope.blog.splice(i,1);
+	 //            }
+	 //        }
+	 //  		console.log("done");
+	 //  		});
+	 //  };
 
 
 

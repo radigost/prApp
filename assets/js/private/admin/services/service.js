@@ -75,6 +75,15 @@ angular.module('adminApp')
             return this;
         };
         return callsModel;
+}])
+    .factory('blogFactory',['RestAPI',function(RestAPI){
+        var blog;
+        blog = function () {
+            this.description = "модель для Блога";
+            this.entries = RestAPI.all('blog').getList().$object;
+            return this;
+        };
+        return blog;
     }])
 .service('gingerFactory',['baseURL',function(baseURL){
 
@@ -113,12 +122,12 @@ angular.module('adminApp')
     
 }])
 
-.service('blogFactory',['$resource','baseURL',function($resource,baseURL){
-
-this.getBlog = function(){
-        return  $resource(baseURL+"blog/:id",null,{'update':{method:'PUT'}});
-    };
-}])
+// .service('blogFactory',['$resource','baseURL',function($resource,baseURL){
+//
+// this.getBlog = function(){
+//         return  $resource(baseURL+"blog/:id",null,{'update':{method:'PUT'}});
+//     };
+// }])
 
 .service('callbackFactory',['$resource','baseURL',function($resource,baseURL){
 

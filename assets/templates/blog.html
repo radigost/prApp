@@ -8,11 +8,12 @@
 		<td>Анонс</td>
 		<td>Запись</td>
 	</tr>
-	<tr ng-repeat ="entry in blog">
-		<td>{{entry.date | date}}</td>
+	<tr ng-repeat ="entry in blog.entries.entries | orderBy:'-createdAt'">
+		<td>{{entry.createdAt | date}}</td>
 		<td>{{entry.title}}</td>
-		<td>{{entry.anons}}</td>
-		<td>Запись</td>
+		<td><img class = "thumbnail img-responsive"src="{{entry.img}}"></td>
+		<td>{{entry.short_text}}</td>
+		<td>{{entry.text}}</td>
 	</tr>
 
 
