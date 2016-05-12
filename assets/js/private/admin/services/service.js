@@ -49,12 +49,19 @@ angular.module('adminApp')
         };
     return userModel;
 }])
-.factory('tagsFactory',['RestAPI',function(RestAPI){
+.factory('tagsFactory',['RestAPI','toastr',function(RestAPI,toastr){
         var tagModel;
         tagModel = function () {
             this.description = "модель для Тэгов";
             this.tags = RestAPI.all('tags').getList().$object;
             return this;
+        };
+        tagModel.prototype.saveTag= function(tag){
+            RestAPI.all('tags').post(tag).then(function (res) {
+                console.log("saved!",res);
+                toastr.success(res.normalname, 'Сохранено!');
+
+            })
         };
         return tagModel;
     }])
