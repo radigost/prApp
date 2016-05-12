@@ -56,11 +56,21 @@ angular.module('adminApp')
             this.tags = RestAPI.all('tags').getList().$object;
             return this;
         };
-        tagModel.prototype.saveTag= function(tag){
+        tagModel.prototype.saveTag= function(tag) {
             RestAPI.all('tags').post(tag).then(function (res) {
-                console.log("saved!",res);
+                console.log("saved!", res);
                 toastr.success(res.normalname, 'Сохранено!');
-
+            });
+        };
+        tagModel.prototype.delTag= function(tag){
+            console.log(tag);
+            RestAPI.all('tags').getList().then(function (res) {
+                var r = _.find(res,{name:tag.name});
+                // console.log("deleting!",res,r);
+                r.remove().then(function (res) {
+                    toastr.warning(res.normalname, 'Удалено!');
+                })
+                //
             })
         };
         return tagModel;
