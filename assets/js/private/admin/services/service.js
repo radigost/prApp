@@ -89,6 +89,17 @@ angular.module('adminApp')
                 toastr.success(res.name, 'Сохранено!');
             });
         };
+        productModel.prototype.delProduct= function(product){
+            console.log(product);
+            RestAPI.all('products').getList().then(function (res) {
+                var r = _.find(res,{title:product.title});
+                console.log("deleting!",res,r);
+                r.remove().then(function (res) {
+                    toastr.warning(res.title, 'Удалено!');
+                })
+                //
+            })
+        };
         return productModel;
     }])
 .factory('callsFactory',['RestAPI',function(RestAPI){
