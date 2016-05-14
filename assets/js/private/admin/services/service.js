@@ -75,12 +75,19 @@ angular.module('adminApp')
         };
         return tagModel;
     }])
-.factory('productsFactory',['RestAPI',function(RestAPI){
+.factory('productsFactory',['RestAPI','toastr',function(RestAPI,toastr){
         var productModel;
         productModel = function () {
             this.description = "модель для продуктов";
             this.products = RestAPI.all('products').getList().$object;
             return this;
+        };
+        productModel.prototype.saveProduct= function(product) {
+            console.log(product);
+            RestAPI.all('products').post(product).then(function (res) {
+                console.log("saved!", res);
+                toastr.success(res.name, 'Сохранено!');
+            });
         };
         return productModel;
     }])
@@ -102,43 +109,5 @@ angular.module('adminApp')
     };
     return blog;
 }])
-// .service('gingerFactory',['baseURL',function(baseURL){
-//
-//
-//
-//     this.getProducts  = function (){
-//         //return pr;
-//             return $resource(baseURL+"pr/:id",null,{'update':{method:'PUT'}});
-//
-//     };
-//     this.getDetails = function(index){
-//         return pr[index];
-//     };
-//     this.getNormalName = function(index){
-//         return normalName[index];
-//     };
-//     this.getNewCart = function(){
-//         return cart;
-//     };
-//
-//     this.getTags  = function (){
-//             return $resource(baseURL+"tag/:id",{id:'@id'},{'update':{method:'PUT'}});
-//
-//     };
-//
-// }])
-// .service('cartFactory',['$resource','baseURL',function($resource,baseURL){
-//     this.getCart = function(){
-//         return  $resource(baseURL+"cart/:id",null,{'update':{method:'PUT'}});
-//     };
-//     this.getOrder = function (){
-//         return  $resource(baseURL+"order/:id",null,{'update':{method:'PUT'}});
-//     };
-//
-//
-//
-// }])
-
-
 
 ;
