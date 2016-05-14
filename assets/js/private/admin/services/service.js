@@ -123,6 +123,11 @@ angular.module('adminApp')
         common.save(entry,'blog');
 
     };
+    blog.prototype.delEntry = function(entry) {
+        // console.log(product);
+        common.delete(entry,'blog');
+
+    };
     return blog;
 }])
 
