@@ -14,7 +14,8 @@ angular
         // 'ngResource',
         'ui.router',
         'restangular',
-        'toastr'
+        'toastr',
+        'ui.bootstrap'
     ])
     .config(function($stateProvider,$urlRouterProvider){
         $urlRouterProvider.otherwise("/main")

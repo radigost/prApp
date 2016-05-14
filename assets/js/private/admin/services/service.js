@@ -118,6 +118,11 @@ angular.module('adminApp')
         this.entries = common.getAll('blog');
         return this;
     };
+    blog.prototype.saveEntry = function(entry) {
+        // console.log(product);
+        common.save(entry,'blog');
+
+    };
     return blog;
 }])
 
