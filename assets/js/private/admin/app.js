@@ -42,16 +42,16 @@ angular
             .state('products',{
                 url:'/products',
                 templateUrl:'templates/products.html',
-                controller:'ProductsCtrl as products',
+                controller:'ProductsCtrl as main',
                 resolve: {
                     tags: function (tagsFactory) {
-                        console.log("resolvin tags");
+                        // console.log("resolvin tags");
                         var s;
                         s = new tagsFactory;
                         return s;
                     },
                     products: function (productsFactory) {
-                        console.log("resolvin products");
+                        // console.log("resolvin products");
                         var s;
                         s = new productsFactory;
                         return s;
@@ -61,10 +61,10 @@ angular
             .state('blog',{
                 url:'/blog',
                 templateUrl:'templates/blog.html',
-                controller:'BlogCtrl as blog',
+                controller:'BlogCtrl as main',
                 resolve: {
                     entries: function (blogFactory) {
-                        console.log("resolvin entries");
+                        // console.log("resolvin entries");
                         var s;
                         s = new blogFactory;
                         return s;
@@ -74,10 +74,10 @@ angular
             .state('callback',{
                 url:'/callback',
                 templateUrl:'templates/callback.html',
-                controller:'CallbackCtrl as calls',
+                controller:'CallbackCtrl as main',
                 resolve: {
                     calls: function (callsFactory) {
-                        console.log("resolvin calls");
+                        // console.log("resolvin calls");
                         var s;
                         s = new callsFactory;
                         return s;

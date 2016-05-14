@@ -10,30 +10,49 @@ angular.module('adminApp')
         });
     }
 ])
-.factory('ordersFactory',['RestAPI',function(RestAPI){
+.service('common', [
+    'RestAPI','toastr', function(RestAPI,toastr) {
+        this.save= function(element,destination) {
+          RestAPI.all(destination).post(element).then(function (res) {
+              // console.log("saved!", res);
+              toastr.success('Сохранено!');
+          });
+        };
+        this.getAll= function(destination) {
+            return RestAPI.all(destination).getList().$object;
+        };
+
+
+        this.delete= function(element,destination){
+            console.log(element);
+            RestAPI.all(destination).getList().then(function (res) {
+                var r = _.find(res,{id:element.id});
+                // console.log("deleting!",res,r);
+                r.remove().then(function (res) {
+                    toastr.warning( 'Удалено!');
+                })
+                //
+            })
+};
+    }
+])
+.factory('ordersFactory',['RestAPI','common',function(RestAPI,common){
     // console.log("starting factory");
     var orderModel;
     orderModel = function () {
         this.description = "модель для заказов. Позволяет просматривать, изменять и удалять заказы";
-        this.orders = RestAPI.all('orders').getList().$object;
+        this.orders = common.getAll('orders');
         return this;
     }
 
     orderModel.prototype.delOrder = function(item){
-        console.log("started");
-        console.log(item);
-        var self = this;
-        item.one(item._id).remove().then(function (res) {
-            _.pull(self.orders,item);
-            console.log("removed");
-        });
-
+        common.delete(item,'orders');
     };
 
     orderModel.prototype.orderDeliver = function(item){
-        console.log(item);
+        // console.log(item);
         item.delivered = true;
-        item.one(item._id).put();
+        item.one(item.id).put();
     };
 
     return orderModel;
@@ -49,73 +68,54 @@ angular.module('adminApp')
         };
     return userModel;
 }])
-.factory('tagsFactory',['RestAPI','toastr',function(RestAPI,toastr){
+.factory('tagsFactory',['RestAPI','common',function(RestAPI,common){
         var tagModel;
         tagModel = function () {
             this.description = "модель для Тэгов";
-            this.tags = RestAPI.all('tags').getList().$object;
+            this.tags = common.getAll('tags');
             return this;
         };
         tagModel.prototype.saveTag= function(tag) {
-            RestAPI.all('tags').post(tag).then(function (res) {
-                console.log("saved!", res);
-                toastr.success(res.normalname, 'Сохранено!');
-            });
+            common.save(tag,'tags');
         };
-        tagModel.prototype.delTag= function(tag){
-            console.log(tag);
-            RestAPI.all('tags').getList().then(function (res) {
-                var r = _.find(res,{name:tag.name});
-                // console.log("deleting!",res,r);
-                r.remove().then(function (res) {
-                    toastr.warning(res.normalname, 'Удалено!');
-                })
-                //
-            })
+        tagModel.prototype.delTag= function(tag) {
+            common.delete(tag, 'tags');
         };
         return tagModel;
     }])
-.factory('productsFactory',['RestAPI','toastr',function(RestAPI,toastr){
+.factory('productsFactory',['RestAPI','common',function(RestAPI,common){
         var productModel;
         productModel = function () {
             this.description = "модель для продуктов";
-            this.products = RestAPI.all('products').getList().$object;
+            this.products = common.getAll('products');
             return this;
         };
         productModel.prototype.saveProduct= function(product) {
-            console.log(product);
-            RestAPI.all('products').post(product).then(function (res) {
-                console.log("saved!", res);
-                toastr.success(res.name, 'Сохранено!');
-            });
+            // console.log(product);
+            common.save(product,'products');
+     
         };
         productModel.prototype.delProduct= function(product){
-            console.log(product);
-            RestAPI.all('products').getList().then(function (res) {
-                var r = _.find(res,{title:product.title});
-                console.log("deleting!",res,r);
-                r.remove().then(function (res) {
-                    toastr.warning(res.title, 'Удалено!');
-                })
-                //
-            })
+            // console.log(product);
+            common.delete(product,'products');
+
         };
         return productModel;
     }])
-.factory('callsFactory',['RestAPI',function(RestAPI){
+.factory('callsFactory',['RestAPI','common',function(RestAPI,common){
     var callsModel;
     callsModel = function () {
             this.description = "модель для Заказа Звонков";
-            this.calls = RestAPI.all('callbacks').getList().$object;
+            this.calls = common.getAll('callbacks');
             return this;
         };
         return callsModel;
 }])
-.factory('blogFactory',['RestAPI',function(RestAPI){
+.factory('blogFactory',['RestAPI','common',function(RestAPI,common){
     var blog;
     blog = function () {
         this.description = "модель для Блога";
-        this.entries = RestAPI.all('blog').getList().$object;
+        this.entries = common.getAll('blog');
         return this;
     };
     return blog;
