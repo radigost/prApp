@@ -33,7 +33,21 @@ angular.module('adminApp')
                 })
                 //
             })
-};
+        };
+        this.put= function(element,destination){
+            // console.log(element);
+            RestAPI.one(destination,element.id).get().then(function (res) {
+                // console.log(res);
+                _.forEach(_.keys(element),function (key) {
+                    res[key]=element[key]
+                })
+
+                res.save().then(function (res) {
+                    toastr.success( 'Сохранено!');
+                })
+                //
+            })
+        };
     }
 ])
 .factory('ordersFactory',['RestAPI','common',function(RestAPI,common){
@@ -51,8 +65,8 @@ angular.module('adminApp')
 
     orderModel.prototype.orderDeliver = function(item){
         // console.log(item);
-        item.delivered = true;
-        item.one(item.id).put();
+        // item.delivered = true;
+        common.put(item,'orders');
     };
 
     return orderModel;
