@@ -122,7 +122,12 @@ angular.module('adminApp')
             this.description = "модель для Заказа Звонков";
             this.calls = common.getAll('callbacks');
             return this;
-        };
+    };
+    callsModel.prototype.delCall= function(call){
+        // console.log(product);
+        common.delete(call,'callbacks');
+
+    };
         return callsModel;
 }])
 .factory('blogFactory',['RestAPI','common',function(RestAPI,common){
