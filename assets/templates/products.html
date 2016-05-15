@@ -17,33 +17,37 @@
       </div>
       <div class="modal-body">
 
-	        <form  class ="form-horizontal" ng-submit="addProduct()">
+	        <form  class ="form-horizontal" >
 
 	        
 
 	        <div class="form-group form-inline">
-		        <label for="title" class="col-sm-4">Имя</label>
-				<input type="text" id ="title "class="form-control col-sm-8 " placeholder ="Наименование " ng-model="title">
+		        <label for="title" class="col-sm-4">Имя*</label>
+				<input type="text" id ="title "class="form-control col-sm-8 " placeholder ="Наименование " ng-model="main.newProduct.title">
 			</div>
 			<div class="form-group form-inline ">
-		        <label for="price" class="col-sm-4">Цена</label>
-				<input type="number"  id ="price" class="form-control col-sm-8" placeholder ="Стоимость" ng-model="price">
+		        <label for="price" class="col-sm-4">Цена*</label>
+				<input type="number"  id ="price" class="form-control col-sm-8" placeholder ="Стоимость" ng-model="main.newProduct.price">
 			</div>
 	        <div class="form-group form-inline">
 		        <label for="description" class="col-sm-4">Описание</label>
-				<textarea type="text" id ="description"class="form-control col-sm-8 " placeholder ="Описание " ng-model="description"></textarea>
-			</div>	
-	        <div class="form-group form-inline">
-		        <label class="col-sm-4" for="image">Картинка</label>
-				<input type="text" id = "image"class="form-control col-sm-8" placeholder ="картинка " ng-model="img">
+				<textarea type="text" id ="description"class="form-control col-sm-8 " placeholder ="Описание " ng-model="main.newProduct.description"></textarea>
 			</div>
-			<div class="form-group form-inline">
-				<label for="tags" class="col-sm-4">Тэги</label>
-				<input type="text" id = "tags" class="form-control col-sm-8" placeholder ="Тэги" ng-model="tags">
-			</div>	
+            <div class="form-group form-inline">
+                <label for="gros_description" class="col-sm-4">Полное описание</label>
+                <textarea type="text" id ="description"class="form-control col-sm-8 " placeholder ="Полное Описание " ng-model="main.newProduct.gros_description"></textarea>
+            </div>
+                <div class="form-group form-inline">
+		        <label class="col-sm-4" for="image">Картинка</label>
+				<input type="text" id = "image"class="form-control col-sm-8" placeholder ="картинка " ng-model="main.newProduct.img">
+			</div>
+			<!--<div class="form-group form-inline">-->
+				<!--<label for="tags" class="col-sm-4">Тэги</label>-->
+				<!--<input type="text" id = "tags" class="form-control col-sm-8" placeholder ="Тэги" ng-model="main.newProduct.tags">-->
+			<!--</div>	-->
 		<div class="form-group form-inline">
 				<label for="popular" class="col-sm-4">Популярная</label>
-				<input type="checkbox" name="popular" id="popular"  ng-model="popular" class="col-sm-8"  >
+				<input type="checkbox" name="popular" id="popular"  ng-model="main.newProduct.popular" class="col-sm-8"  >
 				
 			</div>
 
@@ -52,15 +56,14 @@
 	</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button  class ="btn btn-standart" ng-click="addProduct()" >Добавить</button>
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        <button  class ="btn btn-standart" ng-click=" main.addProduct(main.newProduct)" >Добавить</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- КАтегории товара-->
-<div>
+<!-- Тэги товара-->
 
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tagModal">
   	Категории
@@ -79,38 +82,40 @@
       <p>Любое доабвление в таблицу, добавляет пряник в базу. Любое удаление - удаляет его из базы. Созранение обновляет стату показывать\скрывать объект в скиске категорий в магазине</p>
       	<table class="table table-striped">
   <tr>
+    <td>id</td>
     <td>Категория</td>
     <td>Отображаемое имя</td>
     <td>Показывать в магазине</td>
     <td>Удалить</td>
   </tr>
-  <tr ng-repeat="tag in products.tags.tags">
+  <tr ng-repeat="tag in main.tags.tags">
+    <td>{{tag.id}}</td>
     <td>{{tag.name}}</td>
     <td>{{tag.normalname}}</td>
     <td><input type="checkbox" name="popular" id="popular"  ng-model="tag.showinmagaz"   ></td>
-    <td><a ng-click="delTag(tag)">Удалить</a></td>
+    <td><a ng-click="main.deleteTag(tag)">Удалить</a></td>
     
   </tr>
   <tr>
-  <form>
+  <form >
   	<td>
 	  	<div class="form-group form-inline">
-			<input type="text" id ="description"class="form-control col-sm-8 " placeholder ="Новая категория " ng-model="newTag.name">
+			<input type="text" id ="description"class="form-control col-sm-8 " placeholder ="Новая категория " ng-model="main.newTag.name">
 		</div>	
 	</td>
 	<td>
 	  	<div class="form-group form-inline">
-			<input type="text" id ="description"class="form-control col-sm-8 " placeholder ="Новая категория " ng-model="newTag.normalname">
+			<input type="text" id ="description"class="form-control col-sm-8 " placeholder ="Новая категория " ng-model="main.newTag.normalname">
 		</div>	
 	</td>
-	<td><input type="checkbox" name="popular" value="false" id="popular"  ng-model = "newTag.showinmagaz " ></td>
+	<td><input type="checkbox" name="popular"  id="popular"  ng-model = "main.newTag.showinmagaz " ></td>
 	
   </tr>
-  </form>
+
 
 
 </table>
- <button  class ="btn btn-standart" ng-click="addTag()" >Добавить</button>	        
+ <button  class ="btn btn-primary"  ng-click="main.addTag(main.newTag)" >Добавить</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Отменить</button>
@@ -122,7 +127,7 @@
 <!-- Конец Категории-->
 
 
-
+    </form>
 </div>
 
 
@@ -139,7 +144,7 @@
     <td>Популярная</td>
     <td>Удалить</td>
   </tr>
-  <tr ng-repeat="item in products.products.products">
+  <tr ng-repeat="item in main.products.products">
     <td>{{item.id}}</td>
     
     <td>{{item.title}}</td>
@@ -149,8 +154,7 @@
       <td>{{item.img}}</td>
          <td>{{item.tags}}</td>
             <td>{{item.popular}}</td>
-    
-    <td><a ng-click="delProduct(item)"><i class="fa fa-trash-o"></i>Удалить</a> </td>
+    <td><a ng-click='main.deleteProduct(item)'><i class="fa fa-trash-o"></i>Удалить</a> </td>
   </tr>
 
 </table>

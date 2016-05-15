@@ -1,5 +1,7 @@
-<div>Это блог
-
+<div>Это блог<br>
+	<button type="button" class="btn btn-primary" >
+		Добавить запись
+	</button>
 <table class="table table-striped">
 	<tr>
 		<td>Дата</td>
@@ -7,13 +9,41 @@
 		<td>Картинка анонса</td>
 		<td>Анонс</td>
 		<td>Запись</td>
+		<td>Удалить</td>
+		<td>Изменить</td>
 	</tr>
-	<tr ng-repeat ="entry in blog.entries.entries | orderBy:'-createdAt'">
+	<tr ng-repeat ="entry in main.entries.entries | orderBy:'-createdAt'">
 		<td>{{entry.createdAt | date}}</td>
 		<td>{{entry.title}}</td>
 		<td><img class = "thumbnail img-responsive"src="{{entry.img}}"></td>
 		<td>{{entry.short_text}}</td>
 		<td>{{entry.text}}</td>
+		<!--<td><input type="checkbox" name="popular" id="popular"  ng-model="tag.showinmagaz"   ></td>-->
+		<td><a ng-click="main.deleteEntry(entry)">Удалить</a></td>
+		<td><a>Изменить</a></td>
+	</tr>
+	<tr>
+		<td>
+			<p class="input-group">
+				<input type="text" class="form-control" uib-datepicker-popup ng-model="main.newEntry.date" is-open="main.popup2.opened" datepicker-options="main.dateOptions" ng-required="true" close-text="Close" />
+				<span 	class="input-group-btn">
+            		<button type="button" class="btn btn-default" ng-click="main.open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+          		</span>
+			</p>
+		</td>
+		<td>
+			<input type="text" id ="description"class="form-control  " placeholder ="Заголовок" ng-model="main.newEntry.title">
+		</td>
+		<td>
+			<input type="text" id ="description"class="form-control" placeholder ="Img " ng-model="main.newEntry.img">
+		</td>
+		<td>
+			<input type="text" id ="description"class="form-control " placeholder ="Анонс " ng-model="main.newEntry.short_text">
+		</td>
+		<td>
+			<input type="text" id ="description"class="form-control " placeholder ="Полная запись " ng-model="main.newEntry.text">
+		</td>
+		<td><button class="btn btn-primary" ng-click = "main.addEntry(main.newEntry)">Добавить</button></td>
 	</tr>
 
 

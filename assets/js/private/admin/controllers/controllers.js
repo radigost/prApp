@@ -8,160 +8,111 @@
  * Controller of the adminApp
  */
 angular.module('adminApp')
-
 .controller('MainCtrl',['orders','users', function (orders,users) {
 	console.log("Загружен контроллер");
 	var vm = this;
 	vm.orders = orders
 	vm.users= users;
-	console.log(vm.orders);
-	console.log(vm.users);
+	vm.orderDeliver = function (item) {
+		item.delivered = true;
+		// console.log(item);
+		vm.orders.orderDeliver(item);
+	};
+	vm.deleteOrder = function (item) {
+		item.delivered = true;
+		// console.log(item);
+		vm.orders.delOrder(item);
+		_.remove(vm.orders.orders,function (el) {
+			return el.id == item.id;
+		});
+	};
 
-
-	 
+	// console.log(vm.orders);
+	// console.log(vm.users);
 
 }])
-
-
-.controller('ProductsCtrl',['$scope','gingerFactory','tags','products', function ($scope,gingerFactory,tags,products) {
-//console.log(false);
+.controller('ProductsCtrl',['tags','products', function (tags,products) {
 	var vm = this;
 	vm.tags = tags;
 	vm.products = products;
-	console.log(vm);
-	//  gingerFactory.getProducts().query(function(response)
-	// 	 	{$scope.products = response;
-	// 		 	});
-    //
-	//  gingerFactory.getTags().query(function(response){
-	//  		$scope.alltags = response;
-	//  		$scope.tagLength = response.length;
-	//  });
-    //
-	// $scope.popular = false;
-	// $scope.addProduct= function(){
-	// 	var newProduct = {};
-	// 	newProduct.price = $scope.price;
-	// 	newProduct.title = $scope.title;
-	// 	newProduct.description = $scope.description;
-	// 	newProduct.img = $scope.img;
-	// 	newProduct.tags = $scope.tags;
-	// 	newProduct.popular = $scope.popular;
-	// 	gingerFactory.getProducts().save(newProduct);
-	// 	$scope.products.push(newProduct);
-	// 	$scope.price="";
-	// 	$scope.title="";
-	// 	$scope.description="";
-	// 	$scope.img="";
-	// 	$scope.tags="";
-	// 	$scope.popular="";
-	// 	$scope.newTag={};
-	//  };
-    //
-	// $scope.delProduct = function(item){
-	// 	console.log("started");
-	// 	gingerFactory.getProducts().remove({id:item._id},function(sucsess){
-	// 		for(var i = $scope.products.length-1; i >= 0; i--){
-	// 	        if($scope.products[i]._id == item._id){
-	// 	            $scope.products.splice(i,1);
-	// 		        }
-	// 	    }
-	// 		console.log("done");
-	// 		});
-	// };
-    //
-	// $scope.changeItem = function(){
-	// 	if ($scope.popular) {$scope.popluar = false;}
-	// 	else $scope.popular = true;
-	// };
-    //
-	// $scope.saveTagChanges = function(){
-	// 	var abura = $scope.alltags
-	// 	console.log(abura);
-	// 	for (var i in abura) {
-	// 		if (abura[i].hasOwnProperty('name') ) {
-	// 			gingerFactory.getTags().update({id: abura[i]._id},abura[i]).$promise;
-     //            }
-    //
-    //
-	// 	}
-	// };
-    //
-	// $scope.addTag= function(){
-	// 	$scope.alltags.push($scope.newTag);
-	// 	gingerFactory.getTags().save($scope.newTag).$promise;
-	// 	$scope.newTag = {}
-	// };
-    //
-	// $scope.delTag= function(tag){
-	// 	console.log("started");
-	// 	gingerFactory.getTags().remove({id:tag._id},function(sucsess){
-	// 		for(var i = $scope.alltags.length-1; i >= 0; i--){
-	// 	        if($scope.alltags[i].id == tag.id){
-	// 	            $scope.alltags.splice(i,1);
-	// 		        }
-	// 	    }
-	// 		console.log("done");
-	// 		});
-	// };
+	// console.log(vm);
+	vm.addTag =function (newTag) {
+		console.log(newTag,vm.tags);
+		vm.tags.tags.push(newTag);
+		vm.tags.saveTag(newTag);
+		vm.newTag = {};
+	} ;
+	vm.deleteTag =function (Tag) {
+		_.remove(vm.tags.tags,function (el) {
+			return el.name == Tag.name;
+		});
+		vm.tags.delTag(Tag);
+	} ;
+	vm.addProduct =function (newProduct) {
+		// console.log(newProduct);
+		vm.products.products.push(newProduct);
+		vm.products.saveProduct(newProduct);
+		$('#myModal').modal('hide');
+		vm.newProduct = {};
+	} ;
+	vm.deleteProduct =function (Product) {
+		// console.log(Product);
+		_.remove(vm.products.products,function (el) {
+			return el.title == Product.title;
+		});
+		vm.products.delProduct(Product);
+	} ;
 
 }])
 .controller('BlogCtrl',['$scope','entries', function ($scope,entries) {
 	var vm = this;
 	vm.entries = entries;
-	console.log(vm);
-	 // blogFactory.getBlog().query(function(response)
-	 // 	{$scope.blog = response;
-	 // 	});
-     //
-	 //  $scope.delBlog = function(id){
-	 //  	console.log("started");
-	 //  	blogFactory.getBlog().remove({id:id},function(sucsess){
-	 //  		for(var i = $scope.blog.length-1; i >= 0; i--){
-	 //            if($scope.blog[i].id == id){
-	 //                $scope.blog.splice(i,1);
-	 //            }
-	 //        }
-	 //  		console.log("done");
-	 //  		});
-	 //  };
+	vm.addEntry=function (entry) {
+		console.log(entry);
+		vm.entries.saveEntry(entry);
+		vm.entries.entries.push(entry);
+	}
+	vm.deleteEntry=function (entry) {
+		console.log(entry);
+		vm.entries.delEntry(entry);
+		_.remove(vm.entries.entries,function (el) {
+			return el.title == entry.title;
+		});
+		// vm.entries.entries.push(entry);
+	}
+	// console.log(vm);
 
-
-
+	function disabled(data) {
+		var date = data.date,
+			mode = data.mode;
+		return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+	}
+	vm.dateOptions = {
+		dateDisabled: disabled,
+		formatYear: 'yy',
+		maxDate: new Date(2020, 5, 22),
+		minDate: new Date(),
+		startingDay: 1
+	};
+	vm.popup2 = {
+		opened: false
+	};
+	vm.open2 = function() {
+		vm.popup2.opened = true;
+	};
 
 }])
-
-
 .controller('CallbackCtrl',['$scope','calls', function ($scope,calls) {
-		var vm = this;
-		vm.callbacks = calls;
-	console.log(vm.callbacks.calls);
-	 // callbackFactory.getCallback().query(function(response)
-	 // 	{$scope.callbacks = response;
-	 // 	});
-     //
-	 //  $scope.delCallback = function(id){
-      //     var del_obj = callbackFactory.getCallback().get({callback_id:id},function(){
-      //           console.log("started "+id);
-      //           //console.log(del_obj);
-      //           del_obj.$remove({callback_id:id},function(){
-      //
-      //           for(var i = $scope.callbacks.length-1; i >= 0; i--){
-      //               if($scope.callbacks[i]._id == id){
-      //                   console.log($scope.callbacks[i]);
-      //                   $scope.callbacks.splice(i,1);
-      //               }
-      //               }
-      //           console.log("done");
-      //           });
-      // });
-	 //  };
-
-
-
+	var vm = this;
+	vm.callbacks = calls;
+	vm.delCallback=function (callback) {
+		console.log(callback);
+		vm.callbacks.delCall(callback);
+		_.remove(vm.callbacks.calls,function (el) {
+			return el.id == callback.id;
+		});
+	}
+	// console.log(vm.callbacks.calls);
 
 }])
-
-
-
   ;
