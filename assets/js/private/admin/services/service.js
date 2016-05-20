@@ -114,6 +114,14 @@ angular.module('adminApp')
             common.delete(product,'products');
 
         };
+        productModel.prototype.addTag= function(product,tag){
+            console.log("Будем сохранять",product,tag);
+            // common.delete(product,'products');
+        };
+        productModel.prototype.delTag= function(product,tag){
+            console.log("Будем  удалять",product,tag);
+            // common.delete(product,'products');
+        };
         return productModel;
     }])
 .factory('callsFactory',['RestAPI','common',function(RestAPI,common){

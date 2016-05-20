@@ -31,7 +31,7 @@ angular.module('adminApp')
 	// console.log(vm.users);
 
 }])
-.controller('ProductsCtrl',['tags','products', function (tags,products) {
+.controller('ProductsCtrl',['tags','products','$uibModal', function (tags,products,$uibModal) {
 	var vm = this;
 	vm.tags = tags;
 	vm.products = products;
@@ -62,6 +62,47 @@ angular.module('adminApp')
 		});
 		vm.products.delProduct(Product);
 	} ;
+	vm.addRemoveTags = function (product) {
+		tags = _.differenceBy(vm.tags.tags,product.tags,'name');
+		// console.log(vm.tags.tags);
+		var modalInstance = $uibModal.open({
+			// animation: $scope.animationsEnabled,
+			templateUrl: 'templates/addRemoveTags.html',
+			controller: function ($scope, $uibModalInstance) {
+				console.log("hello from controller",vm.products,product);
+				$scope.item = product;
+				$scope.tags = tags;
+				$scope.add = function (item) {
+					// console.log(item);
+					vm.products.addTag(product,item);
+				}
+				$scope.remove = function (item) {
+					// console.log(item);
+					vm.products.delTag(product,item)
+				}
+				$scope.ok = function () {
+					$uibModalInstance.close($scope.selected.item);
+				};
+				$scope.cancel = function () {
+					$uibModalInstance.dismiss('cancel');
+				};
+			},
+			size: 'lg',
+			// resolve: {
+			// 	items: function () {
+			// 		return $scope.items;
+			// 	}
+			// }
+		});
+		modalInstance.result.then(function (selectedItem) {
+			// $scope.selected = selectedItem;
+		}, function () {
+			// $log.info('Modal dismissed at: ' + new Date());
+			// console.log(selectedItem);
+		});
+	};
+		
+
 
 }])
 .controller('BlogCtrl',['$scope','entries', function ($scope,entries) {
