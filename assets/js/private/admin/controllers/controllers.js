@@ -62,30 +62,41 @@ angular.module('adminApp')
 		});
 		vm.products.delProduct(Product);
 	} ;
+
 	vm.addRemoveTags = function (product) {
 		tags = _.differenceBy(vm.tags.tags,product.tags,'name');
 		// console.log(vm.tags.tags);
+
+
 		var modalInstance = $uibModal.open({
 			// animation: $scope.animationsEnabled,
 			templateUrl: 'templates/addRemoveTags.html',
 			controller: function ($scope, $uibModalInstance) {
-				console.log("hello from controller",vm.products,product);
+				// console.log("hello from controller",vm.products,product);
 				$scope.item = product;
 				$scope.tags = tags;
-				$scope.add = function (item) {
+				$scope.add = function (element) {
 					// console.log(item);
-					vm.products.addTag(product,item);
+					vm.products.addTag(product,element);
+					$scope.item.tags.push(element);
+					_.remove($scope.tags,function (o) {
+						return o.id==element.id;
+					});
 				}
-				$scope.remove = function (item) {
+				$scope.remove = function (element) {
 					// console.log(item);
-					vm.products.delTag(product,item)
+					vm.products.delTag(product,element)
+					$scope.tags.push(element);
+					_.remove($scope.item.tags,function (o) {
+						return o.id==element.id;
+					});
 				}
 				$scope.ok = function () {
-					$uibModalInstance.close($scope.selected.item);
-				};
-				$scope.cancel = function () {
 					$uibModalInstance.dismiss('cancel');
 				};
+				// $scope.cancel = function () {
+				// 	$uibModalInstance.dismiss('cancel');
+				// };
 			},
 			size: 'lg',
 			// resolve: {

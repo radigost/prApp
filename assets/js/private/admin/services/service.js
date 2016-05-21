@@ -24,9 +24,22 @@ angular.module('adminApp')
 
 
         this.delete= function(element,destination){
-            console.log(element);
+            // console.log(element);
             RestAPI.all(destination).getList().then(function (res) {
                 var r = _.find(res,{id:element.id});
+                // console.log("deleting!",res,r);
+                r.remove().then(function (res) {
+                    toastr.warning( 'Удалено!');
+                })
+                //
+            })
+        };
+        this.deleteBy= function(element,destination){
+            // console.log(element);
+            RestAPI.all(destination).getList().then(function (res) {
+                var r = _.find(res,function (o) {
+                    return o.product.id==element.product.id && o.tag.id==element.tag.id
+                });
                 // console.log("deleting!",res,r);
                 r.remove().then(function (res) {
                     toastr.warning( 'Удалено!');
@@ -115,11 +128,15 @@ angular.module('adminApp')
 
         };
         productModel.prototype.addTag= function(product,tag){
-            console.log("Будем сохранять",product,tag);
+            // console.log("Будем сохранять",product,tag);
+            var item = {'product':product.id,'tag':tag.id};
+            common.save(item,'producttags');
             // common.delete(product,'products');
         };
         productModel.prototype.delTag= function(product,tag){
-            console.log("Будем  удалять",product,tag);
+            // console.log("Будем  удалять",product,tag);
+            var item = {'product':product,'tag':tag};
+            common.deleteBy(item,'producttags');
             // common.delete(product,'products');
         };
         return productModel;
