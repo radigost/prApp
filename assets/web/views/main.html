@@ -1,0 +1,118 @@
+   <div name="forh" id="forh">
+   <div class="container">
+        <div class="row row-header back-header" >
+            <div class="col-xs-12 col-sm-3"><img src="img/logo.png" class="logo"></div>
+            <div class="col-xs-12 col-sm-5 boom">
+                <h2>ПРЯНИКИ НА ЗАКАЗ<br> ОТ АННЫ ПОЛЯКОВОЙ</h2>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h2>+7(903) 328-00-19</h2>
+            </div>
+            <!-- верхняя страница с контейнером - баннер и телефон-->
+        </div>
+    </div>
+
+
+
+<div class="container" >
+        <nav class="navbar navbar-inverse  navbar-custom" id="menu" name = "menu" role="navigation" >
+            <div class="navbar-header">
+                <a class="navbar-brand" ui-sref="app.start">
+                    <span class="glyphicon glyphicon-home"> </span>
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--      <a class="navbar-brand" href="index.html">АННА-ПРЯНИК</a> -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ui-sref="app.aboutus" >О нас </a>
+                    </li>
+                    <li><a ui-sref="app.fororder">На заказ</a></li>
+                    <li><a ui-sref="app.magaz({category: ''})">Все пряники</a></li>
+<!--
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-shopping-cart">
+                                Пряники</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Новогодние</a></li>
+                            <li><a href="#">Свадебные</a></li>
+                            <li><a href="#">Сувенирные</a></li>
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="#magaz">Все пряники</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Дополнительно</li>
+                            <li><a href="masterclass.html">Мастер класс</a></li>
+                            <li><a href="for_order.html">На заказ</a></li>
+                        </ul>
+                    </li> -->
+                    <li><a ui-sref="app.masterclass">Мастер-класс</a></li>
+                    <li><a ui-sref="app.contactus">Контакты</a></li>
+                   <!-- <li><a ui-sref="app.delivery">Оплата и доставка</a></li> -->
+                    <li><a ui-sref="app.news">Блог</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+                    <li><a ui-sref="app.cart">Корзина <span class="badge">{{len}}</span></a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </div> <!-- Навигация-->
+    </div>
+<!-- Конец хедера -->
+<div>
+<div ui-view></div>
+</div>>
+<!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="row row-footer">
+            <div class="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1 ">
+                    <h5>Пряники</h5>
+                                    <ul class="list-unstyled">
+                                        <li><a ui-sref="app.fororder">На заказ</a></li>
+                                        <li><a ui-sref="app.masterclass">Мастер-класс</a></li>
+                                        <li><a ui-sref="app.magaz({category: ''})">Все пряники</a></li>
+                                    </ul>
+
+
+                                </div>
+                                <div class="col-xs-6 col-sm-5">
+                                    <h5>Наши контакты</h5>
+                                    <address>
+
+ <i class="fa fa-phone"></i>: +7 (903)-328-00-19<br>
+<i class="fa fa-fax"></i>: 8 800 900 900<br>
+                       <i class="fa fa-envelope"></i>:
+                                 <a href="mailto:n.pollikoff@gmail.com">n.pollikoff@gmail.com</a>
+		           </address>
+                                </div>
+                                <div class="col-xs-12 col-sm-4">
+                                    <div style="padding: 0px 10px;">
+                                        <h5>Мы в соцсетях:</h5>
+                                        <div class="nav navbar-nav" style="padding: 0px 10px;">
+                                            <a class="btn btn-social-icon btn-instagram" href="https://www.instagram.com/pruaniki_v_saratove/"><i class="fa fa-instagram"></i></a>
+                                            <a class="btn btn-social-icon btn-facebook" href="https://web.facebook.com/a.v.polakova"><i class="fa fa-facebook"></i></a>
+                                            <a class="btn btn-social-icon btn-vk" href="http://vk.com/public46680065"><i class="fa fa-vk"></i></a>
+
+                                            <a class="btn btn-social-icon btn-odnoklassniki" href="http://ok.ru/profile/341782257221"><i class="fa fa-odnoklassniki"></i></a>
+                                            <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12">
+                                    <p style="padding:10px;"></p>
+                                    <p align=center>© Copyright 2015 Tetra Design</p>
+                                </div>
+                            </div>
+                        </div>
+                        </footer>

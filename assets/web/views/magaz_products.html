@@ -1,0 +1,27 @@
+
+            <div class=" col-sm-9 col-xs-12" > <!-- "Элементы магазина-->
+                <ol class="breadcrumb">
+                  <li><a ui-sref="app.magaz({category: ''})">Все пряники</a></li>
+                  <li class="active">{{categoryName}}</li>
+                </ol>
+
+
+
+
+
+                 <div ng-repeat ="element in pr | filter:filtCategory" class="col-sm-4 col-xs-12" >
+                
+                <ramka-magaz>   
+                </ramka-magaz>    
+               </div>
+
+
+
+
+
+            </div>
+
+
+
+
+         

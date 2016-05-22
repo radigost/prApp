@@ -1,0 +1,24 @@
+
+
+       <div class="title">
+            <h4>{{element.title}}</h4>   
+        </div>
+
+
+      <img src="{{element.img}}" ui-sref="app.details({id: element._id,category: filtCategory})">
+
+
+        <form class="form" ng-submit="addCart(element)" >
+                <div class="col-sm-5">
+                <input type="number" class="form-control"  min="0" id="number_of_pieces" value = "1" placeholder="1" ng-model="element.amount">
+                </div>
+
+            <label><h4>{{element.price | currency:"":0}} <del>Р</del></h4></label>
+            <button class="btn btn-custom" type="submit" >Заказать</button>
+        </form>
+      
+
+        <div class="description">
+            <p>{{element.description}}</p>
+        </div> 
+ 

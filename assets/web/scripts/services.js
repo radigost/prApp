@@ -62,7 +62,7 @@ angular.module('PrApp')
     
 }])
 .service('cartFactory',['baseURL','Restangular',function(baseURL,Restangular){
-    var cart = Restangular.all('cart');
+    var cart = Restangular.all('carts');
     this.getLength = function(){
         return cart.getList().length;
     };
