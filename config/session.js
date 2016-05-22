@@ -63,6 +63,15 @@ module.exports.session = {
   // prefix: 'sess:',
 
 
+    /*********** postgresql
+     * ***********/
+      adapter: 'sails-pg-session',
+
+     database: 'pr_db',
+     host: 'localhost',
+     user: '123A',
+     // password: 'dbpasswd',
+     port: 5432
   /***************************************************************************
   *                                                                          *
   * Uncomment the following lines to set up a MongoDB session store that can *

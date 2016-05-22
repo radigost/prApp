@@ -3,9 +3,9 @@ angular.module('PrApp').directive('ramkaMagaz', function () {
 		restrict: 'E',
 		templateUrl: "/web/views/ramkaMagazTemplate.html",
 		//scope: {element :'@'},
-		link: function (scope, iElement, iAttrs) { 
-
-		 },
+		// link: function (scope, iElement, iAttrs) {
+        //
+		//  },
 	};
 
 	return directiveDefinitionObject; });
