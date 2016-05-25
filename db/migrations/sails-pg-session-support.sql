@@ -13,7 +13,8 @@ manipulation
 CREATE TABLE sails_session_store(
     sid text PRIMARY KEY,
     data json NOT NULL,
-    created_at timestamp  NOT NULL DEFAULT CURRENT_TIMESTAMP
+    "createdAt" TIMESTAMP WITH TIME ZONE,
+    "updatedAt" TIMESTAMP WITH TIME ZONE
 );
 
 -- set data for session

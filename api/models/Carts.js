@@ -28,7 +28,10 @@ module.exports = {
     updatedAt:{
       type: 'date',
     },
-
+    // find_session: function (req,res) {
+    //     console.log req.session;
+    //
+    // },
 
 
   }

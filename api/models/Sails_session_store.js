@@ -13,6 +13,9 @@ module.exports = {
       columnName: 'sid',
       primaryKey:true,
     },
+    data:{
+      type:'json',
+    }
     // createdAt: {
     //   type: 'date',
     // },

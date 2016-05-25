@@ -6,6 +6,24 @@
  */
 
 module.exports = {
-	
+    //
+    // find: function (req,res) {
+    //     // Carts.find();
+    //     console.log( req.session);
+    // }
+
+    ffind : function(req,res) {
+
+        var sid=req.signedCookies['sails.sid'];
+        var param={session:sid}
+        Carts.find(param).then(function (cartArray) {
+            console.log(cartArray);
+            res.send(cartArray);
+        });
+
+
+    }
+
+
 };
 
