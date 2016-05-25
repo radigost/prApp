@@ -16,11 +16,11 @@
                     <th></th>
                 </tr>
                 <tr ng-repeat = "item in cartData">
-    <td>{{item.title}}</td>
+    <td>{{item.product.title}}</td>
 
-    <td>{{item.price | currency : ' ' :0 }} <span><del>Р</del></span></td> 
+    <td>{{item.product.price | currency : ' ' :0 }} <span><del>Р</del></span></td>
     <td>{{item.amount}} <a ng-click=Minus(item)>-</a><a ng-click=Plus(item)>+</a></td>
-    <td>{{item.price*item.amount}}<span> <del>Р</del></span></td>
+    <td>{{item.product.price*item.amount}}<span> <del>Р</del></span></td>
                     <td><a ng-click="emptyCart(item._id)" ><i class="fa fa-times"></i></a></td>
   </tr>
   <tr>

@@ -180,8 +180,8 @@ angular.module('PrApp')
     $scope.cartData=res ;   
     var itogo = 0;
     res.forEach(function(value,index){
-      if (value.hasOwnProperty('price')){
-        itogo += value.price*value.amount;
+      if (value.product.hasOwnProperty('price')){
+        itogo += value.product.price*value.amount;
       }
     });
    $scope.summ = itogo;
@@ -192,12 +192,12 @@ angular.module('PrApp')
   $scope.Minus = function(item){
     cartFactory.minusNumberOfItems(item);
     item.amount-=1;
-    $scope.summ -= item.price;
+    $scope.summ -= item.product.price;
   };
   $scope.Plus = function(item){
     cartFactory.plusNumberOfItems(item);
     item.amount+=1;
-    $scope.summ += item.price; 
+    $scope.summ += item.product.price;
   };
   $scope.emptyCart = function(choice){
     cartFactory.removeCartItem(choice);

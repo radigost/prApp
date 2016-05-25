@@ -12,13 +12,23 @@ module.exports = {
     //     console.log( req.session);
     // }
 
-    ffind : function(req,res) {
+    find : function(req,res) {
 
         var sid=req.signedCookies['sails.sid'];
         var param={session:sid}
-        Carts.find(param).then(function (cartArray) {
-            console.log(cartArray);
-            res.send(cartArray);
+        Carts.find(param)
+            .populate('product')
+            .then(function (cartArray) {
+                res.send(cartArray);
+            // ret = []
+            // _.forEach(cartArray,function (element) {
+            //     ret.push(element.id);
+            // })
+            // Products.find({id:ret}).then(function (myProducts) {
+            //     res.send(myProducts);
+            // })
+            // console.log(cartArray);
+
         });
 
 
