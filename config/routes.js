@@ -31,7 +31,7 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  'POST /carts': 'CartsController.postProduct',
   '/home': {
     view: 'homepage'
   },
@@ -40,7 +40,8 @@ module.exports.routes = {
   },
   '/': {
     view: 'shop'
-  }
+  },
+
 
   /***************************************************************************
   *                                                                          *

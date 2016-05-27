@@ -8,15 +8,10 @@ angular.module('PrApp')
 }])
 
 .controller('MagazController',['$scope','$rootScope','$stateParams','gingerFactory','cartFactory',function($scope,$rootScope,$stateParams,gingerFactory,cartFactory){
-  // console.log("Hello from ctrl");
     $scope.element = {};
-  $scope.callback = {};  
-  // $scope.bada = 6
-  // $scope.hurray = function(el){
-  //   $scope.bada ++
-  //   console.log(el,$scope.bada);
-  // }
-  var init = function() {
+    $scope.callback = {};
+    $scope.filtCategory="";
+    var init = function() {
     var map = new ymaps.Map('map', {
             center: [55.650625, 37.62708],
             zoom: 10
@@ -24,7 +19,7 @@ angular.module('PrApp')
             searchControlProvider: 'yandex#search'
         }),
         counter = 0,
-
+    
         // Создание макета содержимого балуна.
         // Макет создается с помощью фабрики макетов с помощью текстового шаблона.
         myBalloonContentLayout = ymaps.templateLayoutFactory.createClass(
@@ -34,7 +29,7 @@ angular.module('PrApp')
                 '$[[options.hintContent]]'+
                 '<button id="counter-button"> +1 </button>' +
             '</div>', {
-
+    
             // Переопределяем функцию build, чтобы при создании макета начинать
             // слушать событие click на кнопке-счетчике.
             build: function () {
@@ -44,7 +39,7 @@ angular.module('PrApp')
                 $('#counter-button').bind('click', this.onCounterClick);
                 $('#count').html(counter);
             },
-
+    
             // Аналогично переопределяем функцию clear, чтобы снять
             // прослушивание клика при удалении макета с карты.
             clear: function () {
@@ -53,7 +48,7 @@ angular.module('PrApp')
                 $('#counter-button').unbind('click', this.onCounterClick);
                 myBalloonContentLayout.superclass.clear.call(this);
             },
-
+    
             onCounterClick: function () {
                 $scope.hurray(5);
                 $('#count').html(++counter);
@@ -64,7 +59,7 @@ angular.module('PrApp')
                 }
             }
         });
-
+    
     var placemark = new ymaps.Placemark([55.650625, 37.62708], {
             name: $scope.bada
         }, {
@@ -76,7 +71,7 @@ angular.module('PrApp')
             // Если не указывать эту опцию, на картах маленького размера откроется балун-панель.
             balloonPanelMaxMapArea: 0
         });
-
+    
     map.geoObjects.add(placemark);
     var placemark = new ymaps.Placemark([58.650625, 34.62708], {
             name: 'Считаем'
@@ -89,43 +84,43 @@ angular.module('PrApp')
             // Если не указывать эту опцию, на картах маленького размера откроется балун-панель.
             balloonPanelMaxMapArea: 0
         });
-
+    
     map.geoObjects.add(placemark);
-  }
-  ymaps.ready(init);
-  console.log("SADFSADFAS");
-
-  cartFactory.getCart().then(function(res){
+    }
+    ymaps.ready(init);
+    cartFactory.getCart().then(function(res){
     $rootScope.len = res.length;
-  }); 
+    }); 
 
-  if ($stateParams.id) {
+    if ($stateParams.id) {
     gingerFactory.getElement($stateParams.id).then(function(res){
       $scope.element=res;
       console.log($scope.element);    
     });
-  }
-  $scope.filtCategory="";
-  $scope.categoryName=gingerFactory.getNormalName($stateParams.category);  
-  gingerFactory.getProducts().then( function (res){
-    $scope.pr = res;
-  });
-  $scope.filtCategory  = $stateParams.category;
-  $scope.category = $stateParams.category; //i do not sure if i need it
-  $scope.id=$stateParams.id;
-  $scope.tabs = gingerFactory.getTags({showinmagaz:true}).then(function(data){
-    $scope.tabs = data;
-  });
-  //this is working with cart
-  $scope.cart =cartFactory.getCart();
-  $scope.addCart = function (obj){
-    if (cartFactory.addToCart(obj)){
-      console.log("done!")
-    };
-    $rootScope.len++;
+    }
+    
+    $scope.categoryName=gingerFactory.getNormalName($stateParams.category);  
+    gingerFactory.getProducts().then( function (res){
+        $scope.pr = res;
+    });
+    $scope.filtCategory  = $stateParams.category;
+    $scope.category = $stateParams.category; //i do not sure if i need it
+    $scope.id=$stateParams.id;
+    $scope.tabs = gingerFactory.getTags({showinmagaz:true}).then(function(data){
+        $scope.tabs = data;
+    });
+    //this is working with cart
+    
+    $scope.cart =cartFactory.getCart();
+    $scope.addCart = function (obj){
+        console.log(obj);
+        if (cartFactory.addToCart(obj)){
+            console.log("done!")
+        };
+        $rootScope.len++;
       
     };
-  $scope.addCallbackPr = function(from_method){
+    $scope.addCallbackPr = function(from_method){
     var el = $scope.element;
     el.name = $scope.callbackname;
     el.date = new Date().toISOString();
@@ -138,14 +133,14 @@ angular.module('PrApp')
     $scope.callbackemail="";
     $scope.callbackmessage="";
     $scope.callbackphone="";
-  }
-
-  $scope.CheckMKForm = function(){
+    }
+    
+    $scope.CheckMKForm = function(){
     console.log ($scope.callbackname);
     return true;
-  }
-
-  $scope.normalNameCaller = function(name){
+    }
+    
+    $scope.normalNameCaller = function(name){
     var tabs = $scope.tabs;
     for (var tag in tabs) {
       if (tag.name == name){
@@ -153,7 +148,7 @@ angular.module('PrApp')
         return tag.normalname;
       };       
     }; 
-  }
+    }
   
 }])
 /* .controller('DetailController',['$scope','$stateParams','gingerFactory', 'cartFactory',function($scope,$stateParams,gingerFactory,cartFactory){
@@ -171,10 +166,6 @@ angular.module('PrApp')
     }; 
 }]) */
 .controller('CartController',['$scope','$rootScope','cartFactory',function($scope,$rootScope,cartFactory){
-  
-
-
-
   $scope.showOrder=false;
   cartFactory.getCart().then(function(res){
     $scope.cartData=res ;   

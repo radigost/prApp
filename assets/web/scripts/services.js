@@ -6,25 +6,8 @@ angular.module('PrApp')
  // .constant("baseURL","http://194.87.232.245:3578/api/")
 
 .service('gingerFactory',['Restangular','baseURL',function(Restangular,baseURL){
-
-
- var products = Restangular.all('products');
- var tags = Restangular.all('tags');
-//  var ps = products.one('56bcb91ee4b04d5aff53e430').get().then(function(res){
-//     console.log(res);
-// });
- //console.log(ps);
- 
-// products.getList().then(function(accounts) {
-//     for (var i = accounts.length - 1; i >= 0; i--) {
-//        // console.log(accounts[i].title);
-//     }
-//   //console.log(accounts[0].description);
-// });
-
-
-//console.log(s);
-
+    var products = Restangular.all('products');
+    var tags = Restangular.all('tags');
     var normalName = {
         palochka:"На палочке",
         newyear:"На новый год",
@@ -61,8 +44,9 @@ angular.module('PrApp')
     
     
 }])
-.service('cartFactory',['baseURL','Restangular',function(baseURL,Restangular){
+.service('cartFactory',['baseURL','Restangular','toastr',function(baseURL,Restangular,toastr){
     var cart = Restangular.all('carts');
+    this.toastr=toastr;
     this.getLength = function(){
         return cart.getList().length;
     };
@@ -73,8 +57,17 @@ angular.module('PrApp')
     };
 
     this.addToCart = function(obj){
-        if (!obj.amount) {obj.amount= 1;}
-        cart.post(obj);
+        console.log(toastr);
+        var cartobj={};
+        if (!obj.amount) {cartobj.amount= 1;}
+        cartobj.product_id=obj.id;
+        console.log(cartobj);
+        cart.post(cartobj).then(function(res){
+            if (res.result =="saved") toastr.success("Сохранено в корзине");
+            if (res.result=="exist") toastr.warning("Уже есть в корзине");
+
+
+        });
     };
 
     this.removeCart = function(){

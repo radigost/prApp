@@ -2,32 +2,15 @@
 
 
 angular
-    .module('PrApp', ['restangular','ui.router'])
-        // .config(['$httpProvider', function($httpProvider) {
-        //     $httpProvider.defaults.useXDomain = true;
-        //     $httpProvider.defaults.withCredentials = true;
-        //
-        //  }])
-        // .config(function(RestangularProvider) {
-        //     RestangularProvider.setBaseUrl('http://localhost:3578/api');
-        // })
-
+    .module('PrApp', ['restangular','ui.router','toastr'])
         .config(function($stateProvider, $urlRouterProvider,$locationProvider) {
-
-            $urlRouterProvider.otherwise('index')
+            $urlRouterProvider.otherwise('index');
             $stateProvider
                 .state('app', {
                     url:'/',
                     abstract:true,
                     templateUrl:'/web/views/main.html',
-                    // abstract:true,
-                    // controller:'MagazController',
-                    // resolve:{
-                    //      len: function (cartFactory) {
-                    //          console.log("asdfas");
-                    //          return cartFactory.getCart();
-                    //     }
-                    // }
+
                 })
                 .state('app.start',{
                     url:'index',

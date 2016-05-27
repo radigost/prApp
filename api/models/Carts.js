@@ -10,7 +10,8 @@ module.exports = {
   attributes: {
     id:{
       type:'integer',
-      primaryKey:true,
+      // primaryKey:true,
+      autoIncrement: true,
     },
     session: {
       model:'sails_session_store',
