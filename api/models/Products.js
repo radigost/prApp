@@ -27,10 +27,26 @@ module.exports = {
       type: 'string'
     },
     tags: {
-      type: 'json'
+      collection:'tags',
+      via:'tag',
+      through: 'producttags'
     },
 
+  },
+  getTagsForProduct: function (id){
+    var p;
+    Products.find()
+        .where({ id:id})
+        .exec(function(err, products) {
+          // console.log(products);
+          p = products;
+          // req.send(products);
+          // return products;
 
-  }
+        });
+    // console.log(p);
+    return p;
+
+  },
 };
 

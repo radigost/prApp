@@ -30,6 +30,9 @@ module.exports = {
       type: 'date',
     },
 
-  }
+  },
+  getFullName: function (){
+    return "Bobo";
+  },
 };
 

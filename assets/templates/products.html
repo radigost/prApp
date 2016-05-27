@@ -82,14 +82,14 @@
       <p>Любое доабвление в таблицу, добавляет пряник в базу. Любое удаление - удаляет его из базы. Созранение обновляет стату показывать\скрывать объект в скиске категорий в магазине</p>
       	<table class="table table-striped">
   <tr>
-    <td>id</td>
+    <!--<td>id</td>-->
     <td>Категория</td>
     <td>Отображаемое имя</td>
     <td>Показывать в магазине</td>
     <td>Удалить</td>
   </tr>
   <tr ng-repeat="tag in main.tags.tags">
-    <td>{{tag.id}}</td>
+    <!--<td>{{tag.id}}</td>-->
     <td>{{tag.name}}</td>
     <td>{{tag.normalname}}</td>
     <td><input type="checkbox" name="popular" id="popular"  ng-model="tag.showinmagaz"   ></td>
@@ -146,15 +146,20 @@
   </tr>
   <tr ng-repeat="item in main.products.products">
     <td>{{item.id}}</td>
-    
     <td>{{item.title}}</td>
     <td>{{item.price | currency }}</td>
-   <td>{{item.description}}</td> 
-      <td><img class = "thumbnail img-responsive"src="{{item.img}}"></td>
-      <td>{{item.img}}</td>
-         <td>{{item.tags}}</td>
-            <td>{{item.popular}}</td>
-    <td><a ng-click='main.deleteProduct(item)'><i class="fa fa-trash-o"></i>Удалить</a> </td>
+    <td>{{item.description}}</td>
+    <td><img class = "thumbnail img-responsive"src="{{item.img}}"></td>
+    <td>{{item.img}}</td>
+    <td>
+        <div ng-repeat="tag in item.tags" class="alert alert-info alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span>{{tag.normalname}} </span>
+        </div>
+        <button class="btn btn-success" ng-click="main.addRemoveTags(item)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Добавить тэгов</button>
+    </td>
+    <td>{{item.popular}}</td>
+    <td><button ng-click='main.deleteProduct(item)' class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>  Удалить</button> </td>
   </tr>
 
 </table>

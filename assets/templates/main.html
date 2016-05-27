@@ -23,7 +23,8 @@
     <td>{{item.customeremail}}</td>
     <td>{{item.needDelivery}}</td>
     <td>{{item.customeradress}}</td>
-    <td><a ng-click="main.orderDeliver(item)">Доставить</a><h5 ng-show="item.delivered">Дошло</h5></td>
+    <td><button class="btn btn-success" ng-click="main.orderDeliver(item)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Доставить</button><h5 ng-show="item.delivered">Дошло</h5></td>
+
     <td><a ng-click="main.deleteOrder(item)"><i class="fa fa-trash-o"></i>Удалить</a> </td>
   </tr>
 

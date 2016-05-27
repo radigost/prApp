@@ -17,6 +17,12 @@ module.exports = {
     showinmagaz: {
       type: 'boolean'
     },
+    products:{
+      collection: 'products',
+      via: 'product',
+      through: 'producttags'
+    }
+
   }
 };
 
