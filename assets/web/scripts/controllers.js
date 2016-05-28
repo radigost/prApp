@@ -88,6 +88,7 @@ angular.module('PrApp')
     map.geoObjects.add(placemark);
     }
     ymaps.ready(init);
+    ymaps.ready(init);
     cartFactory.getCart().then(function(res){
     $rootScope.len = res.length;
     }); 
@@ -166,7 +167,16 @@ angular.module('PrApp')
     }; 
 }]) */
 .controller('CartController',['$scope','$rootScope','cartFactory',function($scope,$rootScope,cartFactory){
-  $scope.showOrder=false;
+    $scope.showOrder=false;
+    $scope.summProducts=function () {
+        $scope.summ=0;
+        _.forEach($scope.cartData,function (cartItem) {
+            $scope.summ+=cartItem.amount*cartItem.product.price;
+        })
+    };
+    
+    $scope.summProducts();
+
   cartFactory.getCart().then(function(res){
     $scope.cartData=res ;   
     var itogo = 0;
@@ -180,27 +190,39 @@ angular.module('PrApp')
   $scope.makeOrder = cartFactory.getOrder();
 
      
-  $scope.Minus = function(item){
-    cartFactory.minusNumberOfItems(item);
-    item.amount-=1;
-    $scope.summ -= item.product.price;
+  $scope.Change = function(item,number){
+      // console.log($scope.cartData);
+      var cartItem=_.find($scope.cartData,{id:item});
+
+      cartItem.amount+=number;
+      if (cartItem.amount<0) cartItem.amount=0;
+      $scope.summProducts();
+      // console.log(cartItem,item,number);
+      // cartFactory.changeNumberOfItems(cartItem);
+    
+
+     // cartFactory.minusNumberOfItems(item);
+    // item.amount-=1;
+    // $scope.summ -= item.product.price;
   };
-  $scope.Plus = function(item){
-    cartFactory.plusNumberOfItems(item);
-    item.amount+=1;
-    $scope.summ += item.product.price;
-  };
+  // $scope.Plus = function(item){
+  //   cartFactory.plusNumberOfItems(item);
+  //   item.amount+=1;
+  //   $scope.summ += item.product.price;
+  // };
   $scope.emptyCart = function(choice){
     cartFactory.removeCartItem(choice);
     var cartData = $scope.cartData;
       for(var i = cartData.length-1; i >= 0; i--){  
-        if(cartData[i]._id == choice){ 
-          $scope.summ -=cartData[i].price*cartData[i].amount; 
+        if(cartData[i].id == choice){
           cartData.splice(i,1); 
         }
         $scope.cartData = cartData;
       }  
-    $rootScope.len--;
+    console.log($rootScope.len);
+    if ($scope.cartData.length>0)  $rootScope.len=$scope.cartData.length ;
+    else $rootScope.len=0;
+      $scope.summProducts();
   };
 
   $scope.deleteCart = function(){

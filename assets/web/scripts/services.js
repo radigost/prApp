@@ -71,39 +71,31 @@ angular.module('PrApp')
     };
 
     this.removeCart = function(){
-        cart.remove();
+        console.log (cart.getList());
+        // cart.remove();
         //len=0;
 
     };
 
     this.removeCartItem=function(item){
-        //console.log(item);
-        cart.one(item).remove().then(function(){console.log("ok!")});
+        
+        cart.get(item).then(function(res){
+            res.remove();
+        });
     };
 
-    this.minusNumberOfItems = function(item){
-
-           var p = item._id;
-           Restangular.one('cart',p).get().then(function(res){
-            //console.log(res.amount);
-            res.amount--;
-            // console.log(res.amount);
-            res.put()//.then(function(){console.log("done!");});
+    this.changeNumberOfItems = function(item){
+        console.log("item to send",item);
+        var p = item.id;
+        Restangular.one('carts',p).get().then(function(res){
+        //console.log(res.amount);
+        res.amount = item.amount;
+        // console.log(res);
+        res.put()//.then(function(){console.log("done!");});
         });
     
     };
-   this.plusNumberOfItems = function(item){
 
-           var p = item._id;
-           //console.log(p);
-           Restangular.one('cart',p).get().then(function(res){
-            //console.log(res.amount);
-            res.amount++;
-            //console.log(res);
-            res.put()//.then(function(){console.log("done!");});
-        });
-    
-    };
 
     this.getOrder = function (){
         // return  $resource(baseURL+"order/:id",null,{'update':{method:'PUT'}});

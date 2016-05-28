@@ -13,7 +13,7 @@ module.exports = {
         Products.find()
             .where({ id:req.query.id})
             .exec(function(err, products) {
-                console.log(products);
+                // console.log(products);
                 // p = products;
                 res.send(products);
                 // return products;

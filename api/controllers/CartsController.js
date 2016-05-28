@@ -15,26 +15,11 @@ module.exports = {
             .populate('product')
             .then(function (cartArray) {
                 res.send(cartArray);
-            // ret = []
-            // _.forEach(cartArray,function (element) {
-            //     ret.push(element.id);
-            // })
-            // Products.find({id:ret}).then(function (myProducts) {
-            //     res.send(myProducts);
-            // })
-            // console.log(cartArray);
         });
     },
     postProduct:function (req,res) {
         var product =req.body;
         product.session_id = req.signedCookies['sails.sid'];
-        
-
-        // _.forEach([1,2,3,4,5],function (res) {
-        //     console.log(res);
-        // });
-
-
         var search={product_id:product.product_id,session_id:product.session_id};
         console.log(product,search);
         Carts.findOne(search).then(function cb(result,error) {
@@ -43,13 +28,19 @@ module.exports = {
             else Carts.create(product).then(function(success){
                 res.send({result:"saved"});
             })
-
         });
-        // console.log(req.signedCookies['sails.sid']);
-        // req.send("SADFGASGDAS");
-
+    },
+    putProduct:function (req,res) {
+        var product = req.body;
+        // if (product.amount<0) {
+        //     product.amount = 0;
+        //     console.log(product);
+        // }
+        console.log(product);
+        Carts.update({id:product.id,},{amount:product.amount}).then(function (success,error) {
+            console.log(success,error);
+        })
     }
-
 
 };
 

@@ -32,6 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'POST /carts': 'CartsController.postProduct',
+  'PUT /carts/:id': 'CartsController.putProduct',
   '/home': {
     view: 'homepage'
   },
