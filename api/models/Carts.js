@@ -11,7 +11,7 @@ module.exports = {
     id:{
       type:'integer',
       // primaryKey:true,
-      autoIncrement: true,
+      // autoIncrement: true,
     },
     session: {
       model:'sails_session_store',

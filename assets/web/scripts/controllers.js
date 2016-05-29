@@ -11,85 +11,9 @@ angular.module('PrApp')
     $scope.element = {};
     $scope.callback = {};
     $scope.filtCategory="";
-    var init = function() {
-    var map = new ymaps.Map('map', {
-            center: [55.650625, 37.62708],
-            zoom: 10
-        }, {
-            searchControlProvider: 'yandex#search'
-        }),
-        counter = 0,
-    
-        // Создание макета содержимого балуна.
-        // Макет создается с помощью фабрики макетов с помощью текстового шаблона.
-        myBalloonContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="margin: 10px;">' +
-                '<b>{{properties.name}}</b><br />' +
-                '<i id="count"></i> ' +
-                '$[[options.hintContent]]'+
-                '<button id="counter-button"> +1 </button>' +
-            '</div>', {
-    
-            // Переопределяем функцию build, чтобы при создании макета начинать
-            // слушать событие click на кнопке-счетчике.
-            build: function () {
-                // Сначала вызываем метод build родительского класса.
-                myBalloonContentLayout.superclass.build.call(this);
-                // А затем выполняем дополнительные действия.
-                $('#counter-button').bind('click', this.onCounterClick);
-                $('#count').html(counter);
-            },
-    
-            // Аналогично переопределяем функцию clear, чтобы снять
-            // прослушивание клика при удалении макета с карты.
-            clear: function () {
-                // Выполняем действия в обратном порядке - сначала снимаем слушателя,
-                // а потом вызываем метод clear родительского класса.
-                $('#counter-button').unbind('click', this.onCounterClick);
-                myBalloonContentLayout.superclass.clear.call(this);
-            },
-    
-            onCounterClick: function () {
-                $scope.hurray(5);
-                $('#count').html(++counter);
-                if (counter == 5) {
-                    alert('Вы славно потрудились.');
-                    counter = 0;
-                    $('#count').html(counter);
-                }
-            }
-        });
-    
-    var placemark = new ymaps.Placemark([55.650625, 37.62708], {
-            name: $scope.bada
-        }, {
-            balloonContentLayout: myBalloonContentLayout,
-            hintContent: 'Москва!',
-            preset: 'islands#redIcon',
-            balloonContentFooter: "Подвал",
-            // Запретим замену обычного балуна на балун-панель.
-            // Если не указывать эту опцию, на картах маленького размера откроется балун-панель.
-            balloonPanelMaxMapArea: 0
-        });
-    
-    map.geoObjects.add(placemark);
-    var placemark = new ymaps.Placemark([58.650625, 34.62708], {
-            name: 'Считаем'
-        }, {
-            balloonContentLayout: myBalloonContentLayout,
-            hintContent: 'МАКСВА!',
-            preset: 'islands#redIcon',
-            balloonContentFooter: "Подвал",
-            // Запретим замену обычного балуна на балун-панель.
-            // Если не указывать эту опцию, на картах маленького размера откроется балун-панель.
-            balloonPanelMaxMapArea: 0
-        });
-    
-    map.geoObjects.add(placemark);
-    }
-    
+
     cartFactory.getCart().then(function(res){
-    $rootScope.len = res.length;
+        $rootScope.len = res.length;
     }); 
 
     if ($stateParams.id) {
@@ -173,6 +97,7 @@ angular.module('PrApp')
             $scope.summ+=cartItem.amount*cartItem.product.price;
         })
     };
+
     $scope.summProducts();
     cartFactory.getCart().then(function(res){
         $scope.cartData=res ;
@@ -220,14 +145,17 @@ angular.module('PrApp')
 
     $scope.createOrder = function(order){
         order.products = $scope.cartData;
+        order.summ=$scope.summ;
+        cartFactory.makeOrder(order);
+        // console.log(order);
     // cartFactory.getOrder().save(order);
     //    отправить даные по заказу
     //  отправить данные по продуктам
     //  очистить коорзину
-        $scope.cartData=[];
+    //     $scope.cartData=[];
         $scope.summProducts();
-        $scope.clearOrder()
-        console.log(order);
+        // $scope.clearOrder();
+        // console.log(order);
     };
 
 }])

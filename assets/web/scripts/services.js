@@ -96,7 +96,11 @@ angular.module('PrApp')
     
     };
 
-
+    this.makeOrder = function (order) {
+        Restangular.all('orders').post(order).then(function (orders) {
+            // orders.post(order);
+        })
+    }
     this.getOrder = function (){
         // return  $resource(baseURL+"order/:id",null,{'update':{method:'PUT'}});
     };

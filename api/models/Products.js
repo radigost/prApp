@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    id:{
+      type:'integer',
+      // autoIncrement: true,
+      primaryKey:true,
+    },
     popular: {
       type: 'boolean'
     },
@@ -31,6 +36,12 @@ module.exports = {
       via:'tag',
       through: 'producttags'
     },
+    orders: {
+      collection:'orders',
+      via:'order',
+      through: 'productorder'
+    },
+
 
   },
   getTagsForProduct: function (id){

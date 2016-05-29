@@ -1,1 +1,3 @@
-INSERT INTO public.users (id, "createdAt", "updatedAt", name) VALUES (1, '2016-05-09 18:20:46.000000', '2016-05-09 18:20:46.000000', 'admin');
+INSERT INTO public.users (name, id, "createdAt", "updatedAt") VALUES ('admin', 1, '2016-05-09 18:20:46.000000', '2016-05-09 18:20:46.000000');
+INSERT INTO public.users (name, id, "createdAt", "updatedAt") VALUES ('anna', 2, '2016-05-12 23:47:04.000000', '2016-05-12 23:47:05.000000');
+INSERT INTO public.users (name, id, "createdAt", "updatedAt") VALUES ('strange_user', 3, '2016-05-12 23:47:16.000000', '2016-05-12 23:47:18.000000');

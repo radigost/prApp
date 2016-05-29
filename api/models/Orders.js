@@ -7,7 +7,13 @@
 
 module.exports = {
 
-  attributes: {
+  attributes:{
+    id:{
+      type:'integer',
+      // autoIncrement: true,
+      primaryKey:true,
+    },
+
     customername: {
       type: 'string'
     },
@@ -28,12 +34,20 @@ module.exports = {
       type: 'boolean',
       defaultsTo: 'false'
     },
-    products: {
-      type: 'json'
-    },
+    // products: {
+    //   type: 'json'
+    // },
     createdAt: {
       type: 'date'
     },
+    products:{
+      collection: 'products',
+      via: 'product',
+      through: 'productorder'
+    },
+    summ:{
+      type:'integer',
+    }
     
   }
 };
