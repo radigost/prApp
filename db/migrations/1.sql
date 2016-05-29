@@ -1,27 +1,32 @@
 CREATE TABLE blog
 (
+    id INTEGER,
     title TEXT,
     img TEXT,
     short_text TEXT,
     text TEXT,
-    id INTEGER PRIMARY KEY NOT NULL,
-    "createdAt" TIMESTAMP WITH TIME ZONE,
-    "updatedAt" TIMESTAMP WITH TIME ZONE
+    "createdAt" DATE,
+    "updatedAt" DATE
 );
-CREATE UNIQUE INDEX blog_id_uindex ON blog (id);
-
 CREATE TABLE callbacks
 (
-    id INTEGER PRIMARY KEY NOT NULL,
     message TEXT,
     phone TEXT,
     from_method TEXT,
-    "createdAt" TIMESTAMP WITH TIME ZONE,
-    "updatedAt" TIMESTAMP WITH TIME ZONE,
-    name TEXT
+    name TEXT,
+    "createdAt" DATE,
+    id INTEGER,
+    "updatedAt" TIMESTAMP WITH TIME ZONE
 );
-CREATE UNIQUE INDEX callback_id_uindex ON callbacks (id);
-
+CREATE TABLE carts
+(
+    id INTEGER,
+    "createdAt" DATE,
+    "updatedAt" DATE,
+    amount INTEGER,
+    session_id TEXT,
+    product_id INTEGER
+);
 CREATE TABLE orders
 (
     customername TEXT,
@@ -30,44 +35,63 @@ CREATE TABLE orders
     "needDelivery" BOOLEAN,
     customeradress TEXT,
     delivered BOOLEAN,
+    "createdAt" DATE,
     id INTEGER DEFAULT nextval('orders_id_seq'::regclass) NOT NULL,
-    "createdAt" TIMESTAMP WITH TIME ZONE PRIMARY KEY,
-    "updatedAt" TIMESTAMP WITH TIME ZONE,
-    test TEXT,
-    products JSON
+    "updatedAt" TIMESTAMP WITH TIME ZONE PRIMARY KEY,
+    summ INTEGER DEFAULT 0 NOT NULL
 );
-
+CREATE TABLE product_rel_tags
+(
+    id INTEGER PRIMARY KEY NOT NULL,
+    "createdAt" TIMESTAMP WITH TIME ZONE,
+    "updatedAt" TIMESTAMP WITH TIME ZONE,
+    product_id INTEGER,
+    tag_id INTEGER
+);
 CREATE TABLE products
 (
-    id INTEGER PRIMARY KEY NOT NULL,
-    popular BOOLEAN DEFAULT false,
+    popular BOOLEAN,
     description TEXT,
     gros_description TEXT,
-    price DOUBLE PRECISION,
+    price INTEGER,
     img TEXT,
     title TEXT,
-    tags JSON,
+    id INTEGER PRIMARY KEY NOT NULL,
     "createdAt" TIMESTAMP WITH TIME ZONE,
     "updatedAt" TIMESTAMP WITH TIME ZONE
 );
-CREATE UNIQUE INDEX table_name_id_uindex ON products (id);
-
-CREATE TABLE tags
+CREATE TABLE products_rel_order
 (
     id INTEGER PRIMARY KEY NOT NULL,
-    name TEXT,
-    normalname TEXT,
-    showinmagaz BOOLEAN DEFAULT false NOT NULL,
-    "createdAt" TIMESTAMP WITH TIME ZONE,
-    "updatedAt" TIMESTAMP WITH TIME ZONE
-);
-CREATE UNIQUE INDEX tags_id_uindex ON tags (id);
-CREATE UNIQUE INDEX tags_name_uindex ON tags (name);
-
-CREATE TABLE users
-(
-    id INTEGER PRIMARY KEY NOT NULL,
+    order_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
     "createdAt" TIMESTAMP WITH TIME ZONE,
     "updatedAt" TIMESTAMP WITH TIME ZONE,
-    name TEXT
+    amount INTEGER DEFAULT 1 NOT NULL
 );
+CREATE TABLE sails_session_store
+(
+    data JSON,
+    "createdAt" TIMESTAMP WITH TIME ZONE,
+    "updatedAt" TIMESTAMP WITH TIME ZONE,
+    sid TEXT PRIMARY KEY NOT NULL
+);
+CREATE TABLE tags
+(
+    name TEXT,
+    normalname TEXT,
+    showinmagaz BOOLEAN,
+    id INTEGER PRIMARY KEY NOT NULL,
+    "createdAt" TIMESTAMP WITH TIME ZONE,
+    "updatedAt" TIMESTAMP WITH TIME ZONE
+);
+CREATE TABLE users
+(
+    name TEXT,
+    id INTEGER PRIMARY KEY NOT NULL,
+    "createdAt" TIMESTAMP WITH TIME ZONE,
+    "updatedAt" TIMESTAMP WITH TIME ZONE
+);
+ALTER TABLE products_rel_order ADD FOREIGN KEY (order_id) REFERENCES ;
+ALTER TABLE products_rel_order ADD FOREIGN KEY (product_id) REFERENCES products (id);
+CREATE UNIQUE INDEX products_rel_order_id_uindex ON products_rel_order (id);

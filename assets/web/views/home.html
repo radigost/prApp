@@ -1,0 +1,188 @@
+
+    
+    
+    <div class="container">
+        <div id="carousel-example-generic" class="carousel slide firstcarousel hidden-xs" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="img/1.jpg" alt="..." class="car">
+                    <div class="carousel-caption">Новые</div>
+                </div>
+                <div class="item">
+                    <img src="img/2.jpg" alt="..." class="car">
+                    <div class="carousel-caption">Хорошие</div>
+                </div>
+                <div class="item">
+                    <img src="img/3.jpg" alt="..." class="car">
+                    <div class="carousel-caption">По акции </div>
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+
+    </div> <!--Карусиль -->
+    <div class="container">
+        <div class="row row-content">
+            <div class=" col-sm-9 col-xs-12">
+                <div class="panel hello panel-default">
+                    <div class="panel-body ">
+                        <img class=" img-thumbnail leftimage " src="img/anna-ramka.jpg" alt="...">
+                        <h4> Рада приветствовать Вас на моем сайте, посвященному замечательному элементу нашей национальной культуры — прянику.</h4>
+                        <p>Первые пряники на Руси назывались «медовым хлебом» и появились ещё около IX века, а когда на Руси начали появляться экзотические пряности, привезённые из Индии и с Ближнего Востока, пряник получил своё название и практически окончательно оформился в то лакомство, которое известно нам.</p>
+
+                        <p>Я занимаюсь изучением истории и рецептов пряников, самых необычных и экзотических. На это меня сподвигли рецепты древнерусской кухни, хранящиеся в нашей семье на протяжении уже можно сказать многих веков.</p>
+                        <p>Полный список пряников находится в магазине, а здесь представленны самые интересные варианты</p>
+                        <p>На новый год я приникаю заказы до 15 декабря, после буду очень рада сделать пряник на заказ начиная с 16 января</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3   ">
+                <div class="panel panel-default ">
+                    <div class="panel-heading customorder">
+                        <h3 class="panel-title ">Заказать индивидуальные пряники</h3>
+                    </div>
+                    <div class="panel-body ">
+                        <div class="ord-im"><img src="img/logo.png"></div>
+                        <p>Здесь вы можете сделать заказ на индивидуальные пряники к вашему событию. <a href="">Подробнее</a></p>
+
+                        <div class="ord">
+
+                        <!-- Button trigger modal -->
+<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#prModal">
+  Заказать
+</button>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="prModal" tabindex="-1" role="dialog" aria-labelledby="prModalLabel">
+  <div class="modal-dialog modal-sm " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Расскажите о своей идее</h4>
+      </div>
+
+      <div class="modal-body">
+            <form name="IndividualPrForm" >                     
+                <input type="text" id ="callbackname" name = "callbackname" class="form-control  " placeholder ="* Имя " ng-model="callbackname">
+                <br>
+                <input type="text"  id ="callbackphone" name = "callbackphone" class="form-control " placeholder ="* Телефон" ng-model="callbackphone">
+                <br>                
+                <textarea type="text"  id ="callbackmessage" class="form-control " placeholder ="Идея для пряника" ng-model="callbackmessage"> </textarea> 
+                <br>            
+                            </form>
+
+              
+      </div>
+      <div class="modal-footer"> <small>* - Обязательное поле</small>
+      <button class="btn btn-custom" ng-disabled = "IndividualPrForm.callbackname.$pristine ||IndividualPrForm.callbackphone.$pristine" type="submit" ng-click="addCallbackPr('from_pr')" data-dismiss="modal">Заказать</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+                        
+                        </div>
+                    </div>
+                </div>
+
+            </div> 
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="jumbotron-magaz ">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2>ПОПУЛЯРНЫЕ НАБОРЫ И ПРЯНИКИ</h2>
+                    <br>
+                </div>
+            </div>
+            <div class=" col-sm-12 col-xs-12"> <!-- "Элементы магазина-->
+                
+                
+                 <div class="col-sm-3 col-xs-12 " ng-repeat ="element in pr | filter: 'front'  " >
+                  <ramka-magaz></ramka-magaz>
+                </div>     
+                
+                
+                
+            </div> <!-- Элементы магазина -->
+            
+            <div class="row gg"> 
+                <a class="btn btn-custom col-xs-12 col-sm-5 col-sm-offset-7" type="submit" <a ui-sref="app.magaz({category: ''})">>Посмотреть все предложения</a>                 </div>
+    </div>
+        
+    </div>    <!-- магазин -->
+    
+    <div class="container">
+        <div class="row row-masterclass ">
+            <div class="col-sm-6 col-xs-12 bobr">  
+                <h2>МАСТЕР КЛАССЫ ПО РОСПИСИ ПРЯНИКОВ</h2>
+                <p>Мы очень любим детей и устраиваем для них мастер классы. Чтобы записаться на мастер-класс, просто оставьте заявку и мы свяжемся с вами чтобы согласовать время и направленность мастер класса</p>
+                
+
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#mkModal">
+  Записаться
+</button>
+
+<!-- Modal -->
+<div class="modal fade bs-example-modal-sm" id="mkModal" tabindex="-1" role="dialog" aria-labelledby="prModalLabel">
+  <div class="modal-dialog modal-sm " role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Подать заявку на мастер класс</h4>
+      </div>
+
+      <div class="modal-body">
+            <form name="MasterClassForm" novalidate>                     
+                <div ng-class="{'has-success':MasterClassForm.callbackname.$valid}">
+                <input type="text" ng-required="true" id ="callbackname" name = "callbackname" class="form-control"  placeholder ="* Имя " ng-model="callbackname"  >
+                </div>
+
+                <br>
+                <div ng-class="{'has-success':MasterClassForm.callbackphone.$valid}">
+                <input type="tel" required  id ="callbackphone" class="form-control " name="callbackphone" required placeholder ="* Телефон" ng-model="callbackphone">
+                </div>
+                <br>                
+                <textarea type="text"  id ="callbackmessage" class="form-control " name="callbackmessage" placeholder ="Когда планируется мастеркласс" ng-model="callbackmessage"> </textarea> 
+                <br>            
+                            
+
+              
+      </div>
+      <div class="modal-footer">
+      <small>* - Обязательные поля</small>
+      <button class="btn btn-custom" type="submit" ng-disabled="MasterClassForm.callbackname.$invalid||MasterClassForm.callbackphone.$invalid" ng-click="addCallbackPr('from_mk')" data-dismiss="modal">Заказать</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!--конец модала -->
+            </div>    
+        </div>
+    
+    </div> <!-- ссылка на мастер классы-->

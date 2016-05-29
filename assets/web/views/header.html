@@ -1,0 +1,69 @@
+   <div name="forh" id="forh">
+   <div class="container">
+        <div class="row row-header back-header" >
+            <div class="col-xs-12 col-sm-3"><img src="img/logo.png" class="logo"></div>
+            <div class="col-xs-12 col-sm-5 boom">
+                <h2>ПРЯНИКИ НА ЗАКАЗ<br> ОТ АННЫ ПОЛЯКОВОЙ</h2> 
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <h2>+7(903) 328-00-19</h2>
+            </div>
+            <!-- верхняя страница с контейнером - баннер и телефон-->
+        </div>
+    </div>
+
+
+
+<div class="container" ng-controller="MagazController">
+        <nav class="navbar navbar-inverse  navbar-custom" id="menu" name = "menu" role="navigation" >
+            <div class="navbar-header">
+                <a class="navbar-brand" href="index.html">
+                    <span class="glyphicon glyphicon-home"> </span>
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--      <a class="navbar-brand" href="index.html">АННА-ПРЯНИК</a> -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ui-sref="app.aboutus" >О нас </a>                    
+                    </li>
+                    <li><a ui-sref="app.fororder">На заказ</a></li>
+                    <li><a ui-sref="app.magaz({category: ''})">Все пряники</a></li>
+<!--
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-shopping-cart">
+                                Пряники</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Новогодние</a></li>
+                            <li><a href="#">Свадебные</a></li>
+                            <li><a href="#">Сувенирные</a></li>
+                            <li role="separator" class="divider"></li>
+
+                            <li><a href="#magaz">Все пряники</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Дополнительно</li>
+                            <li><a href="masterclass.html">Мастер класс</a></li>
+                            <li><a href="for_order.html">На заказ</a></li>
+                        </ul>
+                    </li> -->
+                    <li><a ui-sref="app.masterclass">Мастер-класс</a></li>
+                    <li><a ui-sref="app.contactus">Контакты</a></li>
+                   <!-- <li><a ui-sref="app.delivery">Оплата и доставка</a></li> -->
+                    <li><a ui-sref="app.news">Блог</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right ">
+                    <li><a ui-sref="app.cart">Корзина <span class="badge">{{len}}</span></a></li>
+                </ul>
+            </div>
+        </nav>
+
+    </div> <!-- Навигация-->
+    </div>

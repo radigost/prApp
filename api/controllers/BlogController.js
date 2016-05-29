@@ -6,6 +6,9 @@
  */
 
 module.exports = {
-	
+    adore: function (req, res) {
+        var r =Blog.getFullName()+" I adore pets!";
+        res.send(r);
+    }
 };
 
