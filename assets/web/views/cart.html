@@ -38,20 +38,20 @@
 
 
     <div class="row row-content" ng-show="showOrder">
-        <form ng-submit="createOrder()" name ="createOrderForm" class="col-sm-8 col-sm-offset-2">
+        <form ng-submit="createOrder(order)" name ="createOrderForm" class="col-sm-8 col-sm-offset-2">
             <h2>Оформление заказа</h2>
 
             <div class="form-group">
                 <label for="exampleInputPassword1">Как к вам удобно обращаться?</label>
-                <input type="text"  required class="form-control"  id="exampleInputPassword1" placeholder="Имя, фамилия" ng-model="customername">
+                <input type="text"  required class="form-control"  id="exampleInputPassword1" placeholder="Имя, фамилия" ng-model="order.customername">
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Ваш контактый телефон</label>
-                <input type="tel" required class="form-control" id="exampleInputPassword1" placeholder="Контактный телефон" ng-model="customerphone">
+                <label >Ваш контактый телефон</label>
+                <input type="tel" required class="form-control" id="exampleInputPassword1" placeholder="Контактный телефон" ng-model="order.customerphone">
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Ваш контактный email</label>
-                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" ng-model="customeremail">
+                <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" ng-model="order.customeremail">
             </div>
             <div class="checkbox">
                 <div>
@@ -59,12 +59,12 @@
                     </p>
                 </div>
                 <label>
-                    <input type="checkbox" ng-model="needDelivery"> Нужна доставка
+                    <input type="checkbox" ng-model="order.needDelivery"> Нужна доставка
                 </label>
             </div>
-            <div class="form-group" ng-show = "needDelivery">
-                <label for="exampleInputPassword1">Адрес Доставки</label>
-                <textarea ng-disabled="!needDelivery" class="form-control" id="exampleInputPassword1" rows="3" placeholder="Адрес доставки" ng-model ="customeradress"></textarea>
+            <div class="form-group" ng-show = "order.needDelivery">
+                <label >Адрес Доставки</label>
+                <textarea ng-disabled="!order.needDelivery" class="form-control"  rows="3" placeholder="Адрес доставки" ng-model ="order.customeradress"></textarea>
             </div>
             <div class="form-group" >
                 <label>Оплата</label>

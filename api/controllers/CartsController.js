@@ -32,11 +32,6 @@ module.exports = {
     },
     putProduct:function (req,res) {
         var product = req.body;
-        // if (product.amount<0) {
-        //     product.amount = 0;
-        //     console.log(product);
-        // }
-        console.log(product);
         Carts.update({id:product.id,},{amount:product.amount}).then(function (success,error) {
             console.log(success,error);
         })

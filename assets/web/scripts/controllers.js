@@ -87,8 +87,7 @@ angular.module('PrApp')
     
     map.geoObjects.add(placemark);
     }
-    ymaps.ready(init);
-    ymaps.ready(init);
+    
     cartFactory.getCart().then(function(res){
     $rootScope.len = res.length;
     }); 
@@ -174,87 +173,62 @@ angular.module('PrApp')
             $scope.summ+=cartItem.amount*cartItem.product.price;
         })
     };
-    
     $scope.summProducts();
-
-  cartFactory.getCart().then(function(res){
-    $scope.cartData=res ;   
-    var itogo = 0;
-    res.forEach(function(value,index){
-      if (value.product.hasOwnProperty('price')){
-        itogo += value.product.price*value.amount;
-      }
+    cartFactory.getCart().then(function(res){
+        $scope.cartData=res ;
+        var itogo = 0;
+        res.forEach(function(value,index){
+          if (value.product.hasOwnProperty('price')){
+            itogo += value.product.price*value.amount;
+          }
+        });
+    $scope.summ = itogo;
     });
-   $scope.summ = itogo;
-  });
-  $scope.makeOrder = cartFactory.getOrder();
 
-     
-  $scope.Change = function(item,number){
-      // console.log($scope.cartData);
+    $scope.Change = function(item,number){
       var cartItem=_.find($scope.cartData,{id:item});
-
       cartItem.amount+=number;
       if (cartItem.amount<0) cartItem.amount=0;
       $scope.summProducts();
-      // console.log(cartItem,item,number);
-      // cartFactory.changeNumberOfItems(cartItem);
-    
+    };
 
-     // cartFactory.minusNumberOfItems(item);
-    // item.amount-=1;
-    // $scope.summ -= item.product.price;
-  };
-  // $scope.Plus = function(item){
-  //   cartFactory.plusNumberOfItems(item);
-  //   item.amount+=1;
-  //   $scope.summ += item.product.price;
-  // };
-  $scope.emptyCart = function(choice){
-    cartFactory.removeCartItem(choice);
-    var cartData = $scope.cartData;
-      for(var i = cartData.length-1; i >= 0; i--){  
-        if(cartData[i].id == choice){
-          cartData.splice(i,1); 
+    $scope.emptyCart = function(choice){
+        cartFactory.removeCartItem(choice);
+        var cartData = $scope.cartData;
+        for(var i = cartData.length-1; i >= 0; i--){
+            if(cartData[i].id == choice){
+              cartData.splice(i,1);
+            }
+            $scope.cartData = cartData;
         }
-        $scope.cartData = cartData;
-      }  
-    console.log($rootScope.len);
-    if ($scope.cartData.length>0)  $rootScope.len=$scope.cartData.length ;
-    else $rootScope.len=0;
-      $scope.summProducts();
-  };
+        if ($scope.cartData.length>0)  $rootScope.len=$scope.cartData.length ;
+        else $rootScope.len=0;
+        $scope.summProducts();
+    };
 
-  $scope.deleteCart = function(){
-    cartFactory.removeCart();
-    $scope.cartData=[];
-    $scope.summ=0;
-  };
+    $scope.deleteCart = function(){
+        cartFactory.removeCart();
+        $scope.cartData=[];
+        $scope.summ=0;
+    };
 
-  $scope.toggleOrder = function(){
-    var showOrder = $scope.showOrder;
-    $scope.showOrder = !showOrder; 
-    return $scope.showOrder;
-  };
+    $scope.toggleOrder = function(){
+        var showOrder = $scope.showOrder;
+        $scope.showOrder = !showOrder;
+        return $scope.showOrder;
+    };
 
-  $scope.createOrder = function(){
-    var order = {};
-    order.products = $scope.cartData;
-    order.date = new Date().toISOString();  
-    console.log($scope.customername);
-    order.customername = $scope.customername;
-    order.customerphone = $scope.customerphone;
-    order.customeremail = $scope.customeremail;
-    order.needDelivery = $scope.needDelivery;
-    order.customeradress = $scope.customeradress;
-    $scope.makeOrder.save(order);
-    $scope.cartData = $scope.deleteCart();
-    $scope.customername = "";
-    $scope.customerphone = "";
-    $scope.customeremail = "";
-    $scope.needDelivery = false;
-    $scope.customeradress = "";
-  };
+    $scope.createOrder = function(order){
+        order.products = $scope.cartData;
+    // cartFactory.getOrder().save(order);
+    //    отправить даные по заказу
+    //  отправить данные по продуктам
+    //  очистить коорзину
+        $scope.cartData=[];
+        $scope.summProducts();
+        $scope.clearOrder()
+        console.log(order);
+    };
 
 }])
 
