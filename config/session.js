@@ -66,10 +66,10 @@ module.exports.session = {
     /*********** postgresql ************/
         adapter: 'sails-pg-session',
     url: 'postgres://zkwycaajxedaps:HgMJk6R0yV1K2SB3mJYIpRJy5f@ec2-54-228-219-2.eu-west-1.compute.amazonaws.com:5432/d4huce506rnn5i',
-    database: 'pr_db',
-     host: 'localhost',
-     user: '123A',
-     // password: 'dbpasswd',
+    database: 'd4huce506rnn5i',
+     host: 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
+     user: 'zkwycaajxedaps',
+    //  password: 'dbpasswd',
      port: 5432
   /***************************************************************************
   *                                                                          *
