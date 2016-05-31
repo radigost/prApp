@@ -69,8 +69,9 @@ module.exports.session = {
     database: 'd4huce506rnn5i',
      host: 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
      user: 'zkwycaajxedaps',
-    //  password: 'dbpasswd',
-     port: 5432
+     password: 'HgMJk6R0yV1K2SB3mJYIpRJy5f',
+     port: 5432,
+    ssl:true,
   /***************************************************************************
   *                                                                          *
   * Uncomment the following lines to set up a MongoDB session store that can *
