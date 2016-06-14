@@ -95,3 +95,18 @@ CREATE TABLE users
 ALTER TABLE products_rel_order ADD FOREIGN KEY (order_id) REFERENCES ;
 ALTER TABLE products_rel_order ADD FOREIGN KEY (product_id) REFERENCES products (id);
 CREATE UNIQUE INDEX products_rel_order_id_uindex ON products_rel_order (id);
+
+
+CREATE TABLE orders
+(
+    customername TEXT,
+    customerphone TEXT,
+    customeremail TEXT,
+    "needDelivery" BOOLEAN,
+    customeradress TEXT,
+    delivered BOOLEAN,
+    "createdAt" DATE,
+    id INTEGER DEFAULT nextval('orders_id_seq'::regclass) NOT NULL,
+    "updatedAt" TIMESTAMP WITH TIME ZONE PRIMARY KEY,
+    summ INTEGER DEFAULT 0 NOT NULL
+);
