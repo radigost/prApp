@@ -64,11 +64,11 @@ module.exports.session = {
 
 
     /*********** postgresql ************/
-        adapter: 'sails-pg-session',
-    host: '192.168.1.35',
-    user: 'postgres', // optional
-    password: 'RockFucker666', // optional
-    database: 'template1' //optional
+    //     adapter: 'sails-pg-session',
+    // host: '192.168.1.35',
+    // user: 'postgres', // optional
+    // password: 'RockFucker666', // optional
+    // database: 'template1' //optional
     // url: 'postgres://zkwycaajxedaps:HgMJk6R0yV1K2SB3mJYIpRJy5f@ec2-54-228-219-2.eu-west-1.compute.amazonaws.com:5432/d4huce506rnn5i',
     // database: 'd4huce506rnn5i',
     //  host: 'ec2-54-228-219-2.eu-west-1.compute.amazonaws.com',
