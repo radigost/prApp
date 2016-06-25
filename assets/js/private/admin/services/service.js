@@ -2,11 +2,11 @@
 //http://localhost:3578/api/
 angular.module('adminApp')
   //.constant("baseURL","http://194.87.232.245:3578/api/")
-.constant("baseURL","http://localhost:1337")
+.constant("baseURL","http://85.143.218.13:1337")
 .factory('RestAPI', [
     'Restangular', function(Restangular) {
         return Restangular.withConfig(function(RestangularConfigurer) {
-            return RestangularConfigurer.setBaseUrl('http://localhost:1337');
+            return RestangularConfigurer.setBaseUrl('http://85.143.218.13:1337');
         });
     }
 ])

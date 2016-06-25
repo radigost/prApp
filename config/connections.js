@@ -76,9 +76,9 @@ module.exports.connections = {
   ***************************************************************************/
   prPostgresqlServer: {
     adapter: 'sails-postgresql',
-    host: '192.168.1.35',
+    host: '85.143.218.13',
     user: 'postgres', // optional
-    password: 'RockFucker666', // optional
+    password: 'babuka333', // optional
     database: 'template1' //optional
   }
 
