@@ -7,8 +7,10 @@
  * # MainCtrl
  * Controller of the adminApp
  */
-angular.module('adminApp')
-.controller('MainCtrl',['orders','users', function (orders,users) {
+console.log("Грузим контроллеры");
+angular.module('adminApp').controller('MainCtrl',MainCtrl);
+MainCtrl.$inject = ['orders','users'];
+function MainCtrl(orders,users) {
 	console.log("Загружен контроллер");
 	var vm = this;
 	vm.orders = orders
@@ -30,8 +32,13 @@ angular.module('adminApp')
 	// console.log(vm.orders);
 	// console.log(vm.users);
 
-}])
-.controller('ProductsCtrl',['tags','products','$uibModal', function (tags,products,$uibModal) {
+};
+
+
+
+angular.module('adminApp').controller('ProductsCtrl',ProductsCtrl);
+ProductsCtrl.$inject = ['tags','products','$uibModal'];
+function ProductsCtrl(tags,products,$uibModal) {
 	var vm = this;
 	vm.tags = tags;
 	vm.products = products;
@@ -115,8 +122,12 @@ angular.module('adminApp')
 		
 
 
-}])
-.controller('BlogCtrl',['$scope','entries', function ($scope,entries) {
+};
+
+
+angular.module('adminApp').controller('BlogCtrl',BlogCtrl)
+BlogCtrl.$inject=['$scope','entries'];
+function BlogCtrl($scope,entries) {
 	var vm = this;
 	vm.entries = entries;
 	vm.addEntry=function (entry) {
@@ -153,8 +164,13 @@ angular.module('adminApp')
 		vm.popup2.opened = true;
 	};
 
-}])
-.controller('CallbackCtrl',['$scope','calls', function ($scope,calls) {
+};
+
+
+
+angular.module('adminApp').controller('CallbackCtrl',CallbackCtrl)
+CallbackCtrl.$inject = ['$scope','calls'];
+function CallbackCtrl($scope,calls) {
 	var vm = this;
 	vm.callbacks = calls;
 	vm.delCallback=function (callback) {
@@ -165,6 +181,5 @@ angular.module('adminApp')
 		});
 	}
 	// console.log(vm.callbacks.calls);
-
-}])
-  ;
+};
+console.log("Прогрузили контроллеры");

@@ -1,22 +1,14 @@
 'use strict';
-//http://localhost:3578/api/
-
-
-// Register environment in AngularJS as constant
-
-// angular.module('adminApp');
 var _env = {};
-
-// Import variables if present (from env.js)
 if(window){
     Object.assign(_env, window.__env);
 }
 
-// Define AngularJS application
-var ngModule = angular.module('adminApp');
-ngModule.constant('__env', _env);
-ngModule.constant("baseURL",_env.apiUrl);
-ngModule.factory('RestAPI', [
+// var ngModule = ;
+// ngModule.constant('__env', _env);
+// ngModule.constant("baseURL",_env.apiUrl);
+console.log("начинаем загружать фабрики");
+angular.module('adminApp').factory('RestAPI', [
     'Restangular', function(Restangular) {
         return Restangular.withConfig(function(RestangularConfigurer) {
             return RestangularConfigurer.setBaseUrl(_env.apiUrl);
@@ -186,6 +178,5 @@ ngModule.factory('RestAPI', [
 
     };
     return blog;
-}])
-
-;
+}]);
+console.log ("Прогрузили фабрики");

@@ -8,18 +8,12 @@
  *
  * Main module of the application.
  */
-angular
-    .module('adminApp', [
-        // 'ngAnimate',
-        // 'ngResource',
-        'ui.router',
-        'restangular',
-        'toastr',
-        'ui.bootstrap'
-    ])
-    .config(function($stateProvider,$urlRouterProvider){
-        $urlRouterProvider.otherwise("/main")
-
+angular.module('adminApp', [ 'ui.router','restangular','toastr','ui.bootstrap']);
+console.log("Загрузили модуль");
+angular.module('adminApp').config(config);
+console.log("Позвали конфигурацию");
+function config($stateProvider,$urlRouterProvider){
+        $urlRouterProvider.otherwise("/main");
         $stateProvider
             .state ('main',{
                 url:'/main',
@@ -87,5 +81,4 @@ angular
                 }
             })
         ;
-    })
-;
+    };
