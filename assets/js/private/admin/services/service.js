@@ -1,12 +1,25 @@
 'use strict';
 //http://localhost:3578/api/
-angular.module('adminApp')
-  //.constant("baseURL","http://194.87.232.245:3578/api/")
-.constant("baseURL","http://85.143.218.13:1337")
-.factory('RestAPI', [
+
+
+// Register environment in AngularJS as constant
+
+// angular.module('adminApp');
+var _env = {};
+
+// Import variables if present (from env.js)
+if(window){
+    Object.assign(_env, window._env);
+}
+
+// Define AngularJS application
+var ngModule = angular.module('adminApp');
+ngModule.constant('__env', _env);
+ngModule.constant("baseURL",_env.apiUrl);
+ngModule.factory('RestAPI', [
     'Restangular', function(Restangular) {
         return Restangular.withConfig(function(RestangularConfigurer) {
-            return RestangularConfigurer.setBaseUrl('http://85.143.218.13:1337');
+            return RestangularConfigurer.setBaseUrl(_env.apiUrl);
         });
     }
 ])
