@@ -9,7 +9,7 @@ var _env = {};
 
 // Import variables if present (from env.js)
 if(window){
-    Object.assign(_env, window._env);
+    Object.assign(_env, window.__env);
 }
 
 // Define AngularJS application
