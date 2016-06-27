@@ -1,24 +1,15 @@
-
-     <div class="container">
-        <div class="row row-content">
-            
-            
-<div ui-view="gingerContent"></div>
-   <div class="col-xs-12 col-sm-2 col-sm-offset-1 category " >
-
-                <h5>Пряники по категориям</h5>
-                <ul  class="list-unstyled list-element">
-                <li ui-sref="app.magaz({category: ''})"  class="catMagaz">Все</li>
-                    <li ng-repeat="tag in tabs" ui-sref="app.magaz({category:tag.name})" class="catMagaz">{{tag.normalname}}</li>
-                </ul>
-
-                
-
-
-            </div>            
-            
- </div>
+ <!--<div class="container">-->
+     <div class="row row-content">
+         <div ui-view="gingerContent"></div>
+         <div class="col-xs-12 col-sm-2 col-sm-offset-1 category " >
+             <h5>Пряники по категориям</h5>
+             <ul  class="list-unstyled list-element">
+                 <li ui-sref="app.magaz({category: ''})"  class="catMagaz">Все</li>
+                 <li ng-repeat="tag in tabs" ui-sref="app.magaz({category:tag.name})" class="catMagaz">{{tag.normalname}}</li>
+             </ul>
+        </div>
     </div>
+ <!--</div>-->
 
 
                 

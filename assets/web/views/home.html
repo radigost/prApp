@@ -1,8 +1,4 @@
-
-    
-    
-    <div class="container">
-        <div id="carousel-example-generic" class="carousel slide firstcarousel hidden-xs" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide firstcarousel hidden-xs" data-ride="carousel">
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -36,11 +32,11 @@
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+    </div>
 
 
-    </div> <!--Карусиль -->
-    <div class="container">
+    <!--</div> &lt;!&ndash;Карусиль &ndash;&gt;-->
+    <!--<div class="container">-->
         <div class="row row-content">
             <div class=" col-sm-9 col-xs-12">
                 <div class="panel hello panel-default">
@@ -62,51 +58,44 @@
                     </div>
                     <div class="panel-body ">
                         <div class="ord-im"><img src="img/logo.png"></div>
-                        <p>Здесь вы можете сделать заказ на индивидуальные пряники к вашему событию. <a href="">Подробнее</a></p>
-
-                        <div class="ord">
-
+                            <p>Здесь вы можете сделать заказ на индивидуальные пряники к вашему событию. <a href="">Подробнее</a></p>
+                            <div class="ord">
                         <!-- Button trigger modal -->
-<button type="button" class="btn btn-custom" data-toggle="modal" data-target="#prModal">
-  Заказать
-</button>
-
+                                <button type="button" class="btn btn-custom" data-toggle="modal" data-target="#prModal">
+                                  Заказать
+                                </button>
 <!-- Modal -->
-<div class="modal fade bs-example-modal-sm" id="prModal" tabindex="-1" role="dialog" aria-labelledby="prModalLabel">
-  <div class="modal-dialog modal-sm " role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Расскажите о своей идее</h4>
-      </div>
+                        <div class="modal fade bs-example-modal-sm" id="prModal" tabindex="-1" role="dialog" aria-labelledby="prModalLabel">
+                          <div class="modal-dialog modal-sm " role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Расскажите о своей идее</h4>
+                              </div>
 
-      <div class="modal-body">
-            <form name="IndividualPrForm" >                     
-                <input type="text" id ="callbackname" name = "callbackname" class="form-control  " placeholder ="* Имя " ng-model="callbackname">
-                <br>
-                <input type="text"  id ="callbackphone" name = "callbackphone" class="form-control " placeholder ="* Телефон" ng-model="callbackphone">
-                <br>                
-                <textarea type="text"  id ="callbackmessage" class="form-control " placeholder ="Идея для пряника" ng-model="callbackmessage"> </textarea> 
-                <br>            
-                            </form>
-
-              
-      </div>
-      <div class="modal-footer"> <small>* - Обязательное поле</small>
-      <button class="btn btn-custom" ng-disabled = "IndividualPrForm.callbackname.$pristine ||IndividualPrForm.callbackphone.$pristine" type="submit" ng-click="addCallbackPr('from_pr')" data-dismiss="modal">Заказать</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                        
+                              <div class="modal-body">
+                                    <form name="IndividualPrForm" >
+                                        <input type="text" id ="callbackname" name = "callbackname" class="form-control  " placeholder ="* Имя " ng-model="callbackname">
+                                        <br>
+                                        <input type="text"  id ="callbackphone" name = "callbackphone" class="form-control " placeholder ="* Телефон" ng-model="callbackphone">
+                                        <br>
+                                        <textarea type="text"  id ="callbackmessage" class="form-control " placeholder ="Идея для пряника" ng-model="callbackmessage"> </textarea>
+                                        <br>
+                                    </form>
+                              </div>
+                              <div class="modal-footer"> <small>* - Обязательное поле</small>
+                                <button class="btn btn-custom" ng-disabled = "IndividualPrForm.callbackname.$pristine ||IndividualPrForm.callbackphone.$pristine" type="submit" ng-click="addCallbackPr('from_pr')" data-dismiss="modal">Заказать</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
+                            </div>
                     </div>
                 </div>
 
             </div> 
-        </div>
-    </div>
+        <!--</div>-->
+    <!--</div>-->
 
 
     <div class="container">
