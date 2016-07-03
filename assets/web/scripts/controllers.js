@@ -25,6 +25,7 @@ angular.module('PrApp')
     
     $scope.categoryName=gingerFactory.getNormalName($stateParams.category);  
     gingerFactory.getProducts().then( function (res){
+        // console.log(res);
         $scope.pr = res;
     });
     $scope.filtCategory  = $stateParams.category;

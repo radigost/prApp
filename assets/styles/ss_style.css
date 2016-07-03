@@ -1,0 +1,265 @@
+@import url(  http://fonts.googleapis.com/css?family=Roboto%20Slab:700);
+@import url(  http://fonts.googleapis.com/css?family=Roboto:400);
+
+.ss-header{
+    margin: 0px;
+    padding: 0px;
+}
+.ss-navigation-table{
+    display: table;
+    width: 100%;
+    padding: 25px;
+}
+
+.ss-navigation-table-cell{
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.ss-navigation-table-cell .right{
+    text-align: right;
+    padding-right: 18px;
+}
+
+.ss-menu-item span{
+    color: #e47277 !important;
+}
+.navbar-nav > li > a, .navbar-nav > li > span.disable_link {
+
+    font-family: Roboto Slab;
+    padding: 15px 20px 14px 20px;
+    display: inline-block;
+    position: relative;
+    line-height: 14px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5e3c3e;
+}
+
+.wave-separator {
+    height: 9px;
+    width: 100%;
+    background-color: transparent;
+    background: url("/web/img/site/bg-header.png") repeat-x bottom;
+    position: absolute;
+    bottom: -9;
+    z-index: 25;
+}
+body{
+    color: #7a7a7a;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.5em;
+}
+
+#ss-carousel {
+    height: 500px;
+}
+.ss-background-img {
+    position: absolute;
+    height: 600px;
+    width: 1100px;
+    /*transform-origin: 0% 0% 0px;*/
+    /*transform: translate3d(0px,0px,0px);*/
+}
+
+.ss-article-header-container {
+    margin-top: 20px !important;
+    /*margin-bottom: -50px !important;*/
+}
+.ss-article-header   {
+    text-align: center;
+    font-weight: 700;
+    font-family: Roboto Slab;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #2a2a2a;
+
+}
+
+.ss-article-header-table{
+    display: table;
+    padding-top: 35px;
+    margin: auto;
+}
+
+.ss-article-header-table img {
+    margin: -10px 10px;
+}
+.ss-article-header-table-line {
+    width: 50px;
+    border-top: 1px solid #dddddd;
+}
+
+.table-cell{
+    display: table-cell;
+    vertical-align: middle;
+    float: none;
+}
+
+.ss-product-element {
+    width: 272px;
+    border: 1px solid #dddddd;
+    text-align: center;
+    margin: 15px;
+    border-radius: 5px;
+    font-family: Roboto Slab;
+
+}
+
+.ss-product-element-title {
+    display: block;
+    color: #5e3c3e;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    padding: 0 30px;
+    font-size: 16px;
+}
+
+.ss-product-element-price {
+    text-align: center;
+    color: #e47277;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: Roboto Slab;
+    margin-bottom: 30px;
+}
+
+.ss-add-to-cart-div {
+    margin-bottom: -10px;
+
+}
+
+.ss-add-to-cart-button {
+    position: relative;
+    background: #ffffff;
+    color: #e47277;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 13px 20px;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+    font-weight: 700;
+}
+.ss-product-element-wrapper{
+    padding-bottom: 20px;
+}
+.ss-content{
+    position: relative;
+}
+
+.ss-overlay-image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.3) url("../web/img/site/wave-line.png");
+}
+
+.ss-content-headings {
+    position: absolute;
+    text-align: center;
+    color: #ffffff;
+    top: 100px;
+    width: 100%;
+}
+
+button{
+    color: #ffffff;
+    outline: none;
+    padding: 10px 20px;
+    border: 1px solid #e47277;
+    background-color: #e47277;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: Roboto Slab;
+}
+
+.ss-sidebar-bottom {
+    background-color: #f9f5ef;
+    padding: 39px 0;
+}
+
+.subscribe{
+    margin: 13px 0;
+    padding: 25px 0;
+    display: table;
+    /*width: 100%;*/
+}
+.burst {
+    height: 33px;
+    width: 33px;
+    background: #e47277;
+    border-radius: 2px;
+    position: relative;
+    top: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    /*transform: rotate(-60deg);*/
+    z-index: 1;
+}
+
+.burst .span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.title {
+    padding-left: 20px;
+
+}
+
+.title h4 {
+    font-family: Roboto Slab;
+}
+.ss-navigation-table-cell input  {
+    width: 320px;
+    border-radius: 4px;
+    padding-left: 10px;
+    border: 1px solid #f2eadf;
+    height: 43px;
+    background-image: url('../web/img/site/mail-icon.png');
+    background-position: 97% center;
+    background-repeat: no-repeat;
+}
+
+.ss-social-links {
+    margin: 37px 0;
+}
+.footer-sidebars {
+    background-color: #1b1b1b;
+    font-weight: 400;
+    color: #aaaaaa;
+    font-size: 13px;
+}
+
+.wrap-content {
+
+    position: relative;
+    z-index: 1;
+    padding-bottom: 30px;
+    padding-top: 60px;
+}
+.widget-title {
+    margin: 0;
+    line-height: 100%;
+    text-transform: none;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Roboto Slab;
+}
+
+.footer-sidebars  span {
+    font-size: 18px;
+    padding-left: 10px;
+}
+.wrap_content  a {
+    color: #e47277;
+}

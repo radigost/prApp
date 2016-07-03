@@ -14,7 +14,8 @@ angular
                 })
                 .state('app.start',{
                     url:'index',
-                    templateUrl: '/web/views/home.html'
+                    templateUrl: '/web/views/home.html',
+                    controller  : 'MagazController'
                     })
                 .state('app.aboutus', {
                     url:'aboutus',

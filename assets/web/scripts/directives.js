@@ -1,6 +1,6 @@
-angular.module('PrApp').directive('ramkaMagaz', function () {
+angular.module('PrApp').directive('ssProductElement', function () {
 	 var directiveDefinitionObject = {
-		restrict: 'E',
+		restrict: 'CE',
 		templateUrl: "/web/views/ramkaMagazTemplate.html",
 		
 	};
